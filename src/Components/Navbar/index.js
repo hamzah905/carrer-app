@@ -30,9 +30,9 @@ class Navbar extends Component {
         		<div className="leftMenu">
 	        		<LeftMenu />
 				    </div>
-				    <div className="rightMenu">
+				    {/* <div className="rightMenu">
 	        			<RightMenu />
-				    </div>
+				    </div> */}
 				    <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
 		          <span className="barsBtn"></span>
 		        </Button>

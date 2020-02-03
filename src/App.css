@@ -1,15 +1,24 @@
 
 @import '~antd/dist/antd.css';
 
+.logo-with-title{
+  display: flex;
+  margin-left: 42%;
+}
+
+.ant-btn-primary{
+  background-color: #0e355a;
+  border-color: #0e355a; 
+}
+
 .menuBar{
-  border-bottom: solid 1px #e8e8e8;
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;
 }
 .logo{
   background: #002140;
   text-align: center;
-  width: 200px;
+  width: 215px;
   float: left;
 }
 .ant-menu{
@@ -23,7 +32,7 @@
   color: #fdfcfc;
 }
 .menuCon{
-  width: calc(100% - 200px);
+  width: calc(100% - 215px);
   float: left;
 }
 .menuCon .ant-menu-item{
@@ -84,6 +93,9 @@
 }
 .ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover{
   border-bottom-color: transparent;
+}
+.ant-layout-sider{
+  background: #f0f2f5;
 }
 
 @media(max-width: 767px){
