@@ -60,7 +60,7 @@ const ContactUsForm = () => {
         <Input.TextArea placeholder="Your Description" />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary  primary-btnn" htmlType="submit">
           Submit
         </Button>
       </Form.Item>

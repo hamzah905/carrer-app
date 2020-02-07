@@ -1,6 +1,9 @@
 import React from "react";
 import axios from 'axios';
 
+import {
+    Link
+  } from "react-router-dom";
 import { Button } from 'antd';
 import Logo from "../.././Logo.png";
 
@@ -41,7 +44,7 @@ class Jobs extends React.Component {
                     </div>
 
                     <div className="button-div">
-                        <Button type="primary primary-btnn">APPLY</Button>
+                        <Button type="primary primary-btnn" ><Link to={`/apply_job/${job.id}`} >APPLY</Link></Button>
                     </div>
 
                 </div>

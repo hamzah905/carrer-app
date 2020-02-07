@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import {
   Switch,
-  Route
+  Route, 
 } from "react-router-dom";
 import ContactUs from '../pages/ContactUs'
-import Jobs from '../pages/ApplyJob'
+import Jobs from '../pages/Jobs'
 import JobDetail from '../pages/JobDetail'
+import ApplyJob from '../pages/ApplyJob'
 import Blog from '../pages/Blog'
 import Home from '../pages/Home'
 import {  Layout, Breadcrumb } from 'antd';
 import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
 
-// const Home = () => {
-//   return(
-//       <div>
-//       <h2>Home Page:</h2>
-//       <br></br>
-//       <p>Welcome to Home page.</p>
-//       </div>
-//   );
-//   }
-  
 class Sidebar extends Component {
   state = {
     collapsed: false,
@@ -58,6 +49,9 @@ class Sidebar extends Component {
                 </Route>
                 <Route path="/jobs" exact>
                   <Jobs />
+                </Route>
+                <Route path="/apply_job/:job_id" exact>
+                  <ApplyJob />
                 </Route>
                 <Route path="/blog" exact>
                   <Blog />

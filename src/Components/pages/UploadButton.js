@@ -1,68 +1,123 @@
-import React, { Component } from 'react';
+import React from "react";
 
-import { Upload, Icon, message } from 'antd';
+import { Form, Upload, message, Button, Icon } from 'antd';
 
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'application/pdf' || file.type === 'pplication/msword';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-}
-
-class Avatar extends Component {
+class AliyunOSSUpload extends React.Component {
   state = {
-    loading: false,
+    OSSData: {},
   };
 
-  handleChange = info => {
-    if (info.file.status === 'uploading') {
-      this.setState({ loading: true });
-      return;
+  async componentDidMount() {
+    await this.init();
+  }
+
+  init = async () => {
+    try {
+      const OSSData = await this.mockGetOSSData();
+
+      this.setState({
+        OSSData,
+      });
+    } catch (error) {
+      message.error(error);
     }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl =>
-        this.setState({
-          imageUrl,
-          loading: false,
-        }),
-      );
+  };
+
+  // Mock get OSS api
+  // https://help.aliyun.com/document_detail/31988.html
+  mockGetOSSData = () => {
+    return {
+      dir: 'user-dir/',
+      expire: '1577811661',
+      host: '//www.mocky.io/v2/5cc8019d300000980a055e76',
+      accessId: 'c2hhb2RhaG9uZw==',
+      policy: 'eGl4aWhhaGFrdWt1ZGFkYQ==',
+      signature: 'ZGFob25nc2hhbw==',
+    };
+  };
+
+  onChange = ({ fileList }) => {
+    const { onChange } = this.props;
+    console.log('Aliyun OSS:', fileList);
+    if (onChange) {
+      onChange([...fileList]);
     }
+  };
+
+  onRemove = file => {
+    const { value, onChange } = this.props;
+
+    const files = value.filter(v => v.url !== file.url);
+
+    if (onChange) {
+      onChange(files);
+    }
+  };
+
+  transformFile = file => {
+    const { OSSData } = this.state;
+
+    const suffix = file.name.slice(file.name.lastIndexOf('.'));
+    const filename = Date.now() + suffix;
+    file.url = OSSData.dir + filename;
+
+    return file;
+  };
+
+  getExtraData = file => {
+    const { OSSData } = this.state;
+
+    return {
+      key: file.url,
+      OSSAccessKeyId: OSSData.accessId,
+      policy: OSSData.policy,
+      Signature: OSSData.signature,
+    };
+  };
+
+  beforeUpload = async () => {
+    const { OSSData } = this.state;
+    const expire = OSSData.expire * 1000;
+
+    if (expire < Date.now()) {
+      await this.init();
+    }
+    return true;
   };
 
   render() {
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? 'loading' : 'plus'} />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
-    const { imageUrl } = this.state;
+    const { value } = this.props;
+    const props = {
+      name: 'file',
+      fileList: value,
+      action: this.state.OSSData.host,
+      onChange: this.onChange,
+      onRemove: this.onRemove,
+      transformFile: this.transformFile,
+      data: this.getExtraData,
+      beforeUpload: this.beforeUpload,
+    };
     return (
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        beforeUpload={beforeUpload}
-        onChange={this.handleChange}
-      >
-        {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+      <Upload {...props}>
+        <Button>
+          <Icon type="upload" /> Click to Upload
+        </Button>
       </Upload>
     );
   }
 }
+
+class FormPage extends React.Component {
+  render() {
+    const { getFieldDecorator } = this.props.form;
+    return (
+      <Form onSubmit={this.handleSubmit} labelCol={{ span: 4 }}>
+        <Form.Item label="File">{getFieldDecorator('File')(<AliyunOSSUpload />)}</Form.Item>
+      </Form>
+    );
+  }
+}
+
+const Avatar = Form.create()(FormPage);
 
 export default Avatar;

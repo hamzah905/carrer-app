@@ -34,8 +34,8 @@ return(
             textAlign: 'right',
           }}
         >
-          <Button type="primary" htmlType="submit" style={{marginRight: '46%'}}>
-            SUBMIT
+          <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
+            APPLY
           </Button>
         </Col>
       </Row>

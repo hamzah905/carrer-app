@@ -1,44 +1,34 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Input, Button } from 'antd';
-import Avatar from './UploadButton';
+// import Avatar from './UploadButton';
 import Logo from "../.././Logo.png";
 
 class ApplyJobForm extends React.Component {
   
-  state = {
-    user: {
-      first_name: '',
-      last_name: '',
-      email: '',
-      contact_no: '',
-      address: '',
-    }
-  }
-
-  handleChange = event => {
-    this.setState({
-      first_name: event.target.value,
-      last_name: event.target.value,
-      email: event.target.value,
-      contact_no: event.target.value,
-      address: event.target.value,
-    });
-  }
   handleSubmit = event => {
     event.preventDefault();
     this.props.form.validateFields((err, values) => {
       console.log('Received values of form: ', values);
+      const user = {
+        first_name: values.first_name,
+        last_name: values.last_name,
+        email: values.email,
+        contact_no: values.contact_no,
+        address: values.address,
+        resume: values.cv,
+        cover_letter: values.cover_letter,
+      };
+      debugger
+      console.log('Received values of user: ', user);
+      axios.post(`http://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)
+    }/apply?url=messanger-store.myshopify.com`, { user })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
     });
-    // const user = {
-    //   name: this.state.name
-    // };
-
-    // axios.post(`http://shoppify-career.herokuapp.com/jobs/1/apply?url=messanger-store.myshopify.com`, { user })
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
   }
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -63,7 +53,7 @@ class ApplyJobForm extends React.Component {
       name={`FirstName`}
       label={`First Name`}
       >
-            {getFieldDecorator(`first-name}`, {
+            {getFieldDecorator(`first_name`, {
               rules: [
                 {
                   required: true,
@@ -78,7 +68,7 @@ class ApplyJobForm extends React.Component {
       name={`LastName`}
       label={`Last Name`}
       >
-            {getFieldDecorator(`last-name}`, {
+            {getFieldDecorator(`last_name`, {
               rules: [
                 {
                   required: true,
@@ -93,7 +83,7 @@ class ApplyJobForm extends React.Component {
       name={`Email`}
       label={`Email`}
       >
-            {getFieldDecorator(`email}`, {
+            {getFieldDecorator(`email`, {
               rules: [
                 {
                   required: true,
@@ -108,7 +98,7 @@ class ApplyJobForm extends React.Component {
       name={`ContactNo`}
       label={`Contact No`}
       >
-            {getFieldDecorator(`contact-no}`, {
+            {getFieldDecorator(`contact_no`, {
               rules: [
                 {
                   required: true,
@@ -123,7 +113,7 @@ class ApplyJobForm extends React.Component {
       name={`Requirnment`}
       label={`Requirnment`}
       >
-            {getFieldDecorator(`requirnment}`, {
+            {getFieldDecorator(`requirnment`, {
               rules: [
                 {
                   required: true,
@@ -138,7 +128,7 @@ class ApplyJobForm extends React.Component {
       name={`Address`}
       label={`Address`}
       >
-            {getFieldDecorator(`address}`, {
+            {getFieldDecorator(`address`, {
               rules: [
                 {
                   required: true,
@@ -153,29 +143,29 @@ class ApplyJobForm extends React.Component {
       name={`CV`}
       label={`CV`}
       >
-            {getFieldDecorator(`cv}`, {
+            {getFieldDecorator(`cv`, {
               rules: [
                 {
-                  required: true,
+                  // required: true,
                   message: 'Input something!',
                 },
               ],
-            })(<Avatar />)}
+            })(<Input type="file"  style={{ minHeight: '36px' }} />)}
           </Form.Item>
         </Col>
-      <Col span={12} key= 'cover-letter'>
+      <Col span={12} key= 'cover_letter'>
       <Form.Item
       name={`CoverLetter`}
       label={`CoverLetter`}
       >
-            {getFieldDecorator(`cover-letter}`, {
+            {getFieldDecorator(`cover_letter`, {
               rules: [
                 {
-                  required: true,
+                  // required: true,
                   message: 'Input something!',
                 },
               ],
-            })(<Avatar />)}
+            })(<Input type="file"  style={{ minHeight: '36px' }} />)}
           </Form.Item>
         </Col>
       </Row>
@@ -186,8 +176,8 @@ class ApplyJobForm extends React.Component {
             textAlign: 'right',
           }}
         >
-          <Button type="primary" htmlType="submit" style={{marginRight: '46%'}}>
-            SUBMIT
+          <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
+            APPLY
           </Button>
         </Col>
       </Row>
@@ -197,4 +187,4 @@ class ApplyJobForm extends React.Component {
 
 const WrappedAdvancedSearchForm = Form.create({ name: 'advanced_search' })(ApplyJobForm);
 
-export default WrappedAdvancedSearchForm;
+export default withRouter(WrappedAdvancedSearchForm);

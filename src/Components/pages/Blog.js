@@ -78,7 +78,7 @@ render() {
                 marginTop: '10%',
             }}
             >
-            <Button type="primary" htmlType="submit" style={{marginRight: '46%'}}>
+            <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
                 VIEW JOBS
             </Button>
             </Col>
