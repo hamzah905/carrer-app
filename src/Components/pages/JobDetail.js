@@ -8,7 +8,7 @@ return(
     <div>
       <div className='logo-with-title'>
         <img src={Logo} className="App-logo" alt="logo" />
-        <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>Job Detail</h2>
+        <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>JOB DETAIL</h2>
       </div>
     <br></br>
     <hr></hr>

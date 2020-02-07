@@ -10,7 +10,50 @@
   background-color: #0e355a;
   border-color: #0e355a; 
 }
-
+.row-job{
+  margin-left: 18%;
+}
+.primary-btnn:hover, primary-btnn:focus{
+  color: #fff;
+  background-color: #0e355a !important;
+  border-color: #0e355a !important;
+}
+.primary-btnn::selection{
+  color: #fff;
+  background-color: #0e355a;
+  border-color: #0e355a;
+}
+.job-heading{
+  margin-right: 115px;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 22px;
+  line-height: 1.1rem;
+  transition: color 150ms;
+  color: #515357;
+  text-transform: none;
+  letter-spacing: 0px;
+}
+.primary-btnn{
+  letter-spacing: 2px;
+  width: 125%;
+}
+.job-location{
+  color: #737578;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 14px;
+}
+.job-div{
+  display: flex;
+}
+.description-div{
+  min-width: 50%;
+}
+.button-div{
+  margin: 18px;
+  margin-left: 19%;
+}
 .menuBar{
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;

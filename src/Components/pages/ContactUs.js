@@ -43,7 +43,7 @@ const ContactUsForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="Tom Cruse" />
       </Form.Item>
       <Form.Item
         name={['user', 'email']}
@@ -54,10 +54,10 @@ const ContactUsForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="example@example.com" />
       </Form.Item>
       <Form.Item name={['user', 'description']} label="Description">
-        <Input.TextArea />
+        <Input.TextArea placeholder="Your Description" />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
         <Button type="primary" htmlType="submit">

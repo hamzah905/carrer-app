@@ -4,8 +4,10 @@ import {
   Route
 } from "react-router-dom";
 import ContactUs from '../pages/ContactUs'
-import ApplyJob from '../pages/ApplyJob'
+import Jobs from '../pages/ApplyJob'
 import JobDetail from '../pages/JobDetail'
+import Blog from '../pages/Blog'
+import Home from '../pages/Home'
 import {  Layout, Breadcrumb } from 'antd';
 import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
@@ -36,7 +38,7 @@ class Sidebar extends Component {
         <Sider>
           <div className="logo" />
           <div>
-            <img src={SideImage} alt="logo"  style={{ width: '100%', marginTop: '90%' }} />
+            <img src={SideImage} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
           </div>
         </Sider>
         <Layout>
@@ -44,20 +46,23 @@ class Sidebar extends Component {
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              <Breadcrumb.Item>Careers</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 470 }}>
               <Switch>
-                {/* <Route path="/">
+                <Route path="/" exact>
                   <Home />
-                </Route> */}
-                <Route path="/careers">
+                </Route>
+                <Route path="/careers" exact>
                   <JobDetail />
                 </Route>
-                <Route path="/jobs">
-                  <ApplyJob />
+                <Route path="/jobs" exact>
+                  <Jobs />
                 </Route>
-                <Route path="/contact_us">
+                <Route path="/blog" exact>
+                  <Blog />
+                </Route>
+                <Route path="/contact_us" exact>
                   <ContactUs />
                 </Route>
               </Switch>
