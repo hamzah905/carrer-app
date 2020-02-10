@@ -22,7 +22,7 @@ class ApplyJobForm extends React.Component {
       };
       debugger
       console.log('Received values of user: ', user);
-      axios.post(`http://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)
+      axios.post(`https://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)
     }/apply?url=messanger-store.myshopify.com`, { user })
         .then(res => {
           console.log(res);
