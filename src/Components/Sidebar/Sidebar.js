@@ -9,6 +9,7 @@ import JobDetail from '../pages/JobDetail'
 import ApplyJob from '../pages/ApplyJob'
 import Blog from '../pages/Blog'
 import Home from '../pages/Home'
+import Careers from '../pages/Careers'
 import {  Layout, Breadcrumb } from 'antd';
 import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
@@ -45,6 +46,9 @@ class Sidebar extends Component {
                   <Home />
                 </Route>
                 <Route path="/careers" exact>
+                  <Careers />
+                </Route>
+                <Route path="/jobs/:job_id" exact>
                   <JobDetail />
                 </Route>
                 <Route path="/jobs" exact>

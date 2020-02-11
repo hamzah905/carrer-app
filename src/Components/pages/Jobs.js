@@ -39,7 +39,7 @@ class Jobs extends React.Component {
 
                 <div className="job-div">
                     <div className="description-div">
-                        <h3 className="job-heading">{job.title}</h3>
+                        <h3 className="job-heading"><Link to={`/jobs/${job.id}`} style={{ color: "black"}}>{job.title}</Link></h3>
                         <p className="job-location">{job.description}</p>
                     </div>
 
