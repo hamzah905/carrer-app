@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import { Form, Row, Col, Input, Button } from 'antd';
+import { Form, Row, Col, Input, Button, message } from 'antd';
 // import Avatar from './UploadButton';
 import Logo from "../.././Logo.png";
 
@@ -26,8 +26,8 @@ class ApplyJobForm extends React.Component {
         .then(res => {
           console.log(res);
           console.log(res.data);
-          window.location.href = '/jobs';
-          alert("Job Applied!")
+          this.props.history.push('/jobs');
+          message.success('Job Applied Sucessfully', 2);
         })
     });
   }
@@ -177,7 +177,7 @@ class ApplyJobForm extends React.Component {
             textAlign: 'right',
           }}
         >
-          <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
+          <Button type="primary primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
             APPLY
           </Button>
         </Col>
