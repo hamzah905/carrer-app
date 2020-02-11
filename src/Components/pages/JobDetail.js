@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import {
     Link, withRouter
   } from "react-router-dom";
@@ -7,8 +8,21 @@ import { Row, Col, Button, Descriptions } from 'antd';
 import Logo from "../.././Logo.png";
 
 class JobDetail extends React.Component {
+    
+  state = {
+    job: []
+  }
 
+  componentDidMount() {
+    axios.get(`https://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)}?url=messanger-store.myshopify.com`)
+      .then(res => {
+        var job = res.data.data;
+        this.setState({ job });
+      })
+  }
   render() {
+
+    var { job } = this.state;
     return(
         <div>
           <div className='logo-with-title'>
@@ -19,17 +33,18 @@ class JobDetail extends React.Component {
         <hr></hr>
         <br></br>
         <br></br>
+        <h1 style={{ textAlign: 'center', fontSize: "xx-large" }}>{job.title}</h1>
         <Descriptions>
-          <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-          <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-          <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-          <Descriptions.Item label="Remark">empty</Descriptions.Item>
-          <Descriptions.Item label="Address">
-            No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+          <Descriptions.Item label="No of Positions">{job.no_of_positions}</Descriptions.Item>
+          <Descriptions.Item label="Experience Required">{job.experience}</Descriptions.Item>
+          <Descriptions.Item label="Salary">{job.salary}</Descriptions.Item>
+          <Descriptions.Item label="Skills Required">{job.skills}</Descriptions.Item>
+          <Descriptions.Item label="Date Posted">
+            {job.created_at}
           </Descriptions.Item>
           <br></br>
           <Descriptions.Item label="Description">
-          <div style={{ padding: 24, background: '#fff', minHeight: 360, textAlign: 'justify' }}>Bill is a cat. Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.Part of learning, especially in software, is trying things. Sometimes those things work out for the best, sometimes is only by making mistakes that you learn what the “correct way” is. Stated differently, unless you are a literal genius, your first React project is going to have a few gnarly mistakes. This is normal.</div>
+    <div style={{ padding: 24, background: '#fff', minHeight: 360, textAlign: 'justify' }}>{job.description}</div>
           </Descriptions.Item>
         </Descriptions>
         <Row>

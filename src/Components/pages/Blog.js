@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import { Link, withRouter } from "react-router-dom";
 
 import { Row, Col, Button, Descriptions } from 'antd';
 import Logo from "../.././Logo.png";
@@ -68,7 +69,6 @@ render() {
             }
         </div>
         )}
-        
             
         <Row>
             <Col
@@ -79,7 +79,7 @@ render() {
             }}
             >
             <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
-                VIEW JOBS
+                <Link to={`/jobs`} >VIEW JOBS</Link>
             </Button>
             </Col>
         </Row>
@@ -88,4 +88,4 @@ render() {
     }
 }
 
-export default Blog;
+export default withRouter(Blog);
