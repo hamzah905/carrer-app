@@ -20,13 +20,14 @@ class ApplyJobForm extends React.Component {
         resume: values.cv,
         cover_letter: values.cover_letter,
       };
-      debugger
       console.log('Received values of user: ', user);
       axios.post(`https://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)
     }/apply?url=messanger-store.myshopify.com`, { user })
         .then(res => {
           console.log(res);
           console.log(res.data);
+          window.location.href = '/jobs';
+          alert("Job Applied!")
         })
     });
   }
