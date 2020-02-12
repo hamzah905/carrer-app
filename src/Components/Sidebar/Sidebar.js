@@ -40,7 +40,7 @@ class Sidebar extends Component {
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>Careers</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 470 }}>
+            <div className="custom-section">
               <Switch>
                 <Route path="/" exact>
                   <Home />

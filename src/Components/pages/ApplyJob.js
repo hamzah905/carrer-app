@@ -36,18 +36,23 @@ class ApplyJobForm extends React.Component {
 
     
   return (
+
+    <div className="container">
+      <div className="custom-header">
+      <div className="custom-logo">
+        <img src={Logo} className="App-logo" alt="logo" />
+        <h2>APPLY JOB</h2>
+        </div>
+      </div>
+
+    <div className="custom-detail-section">
     <Form
       name="advanced_search"
       className="ant-advanced-search-form"
-      onSubmit={this.handleSubmit}
-    >
-    <div className='logo-with-title'>
-      <img src={Logo} className="App-logo" alt="logo" />
-      <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>APPLY JOB</h2>
-    </div>
-    <br></br>
-    <hr></hr>
-    <br></br>
+      onSubmit={this.handleSubmit}>
+
+       
+
       <Row gutter={24}>
       <Col span={12} key= 'first-name'>
       <Form.Item
@@ -183,6 +188,8 @@ class ApplyJobForm extends React.Component {
         </Col>
       </Row>
     </Form>
+    </div>
+    </div>
   )};
 };
 

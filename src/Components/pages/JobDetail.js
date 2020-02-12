@@ -24,16 +24,18 @@ class JobDetail extends React.Component {
 
     var { job } = this.state;
     return(
-        <div>
-          <div className='logo-with-title'>
-            <img src={Logo} className="App-logo" alt="logo" />
-            <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>JOB DETAIL</h2>
+        <div className="container">
+          <div className="custom-header">
+                <div className="custom-logo">
+              <img src={Logo} className="App-logo" alt="logo" />
+                <h2>JOB DETAIL</h2>
+            </div>
           </div>
-        <br></br>
-        <hr></hr>
-        <br></br>
-        <br></br>
-        <h1 style={{ textAlign: 'center', fontSize: "xx-large" }}>{job.title}</h1>
+       
+      <div className="custom-detail-heading">
+        <h1>{job.title}</h1>
+        </div>
+        <div className="custom-detail-section custom-job-section">
         <Descriptions>
           <Descriptions.Item label="No of Positions">{job.no_of_positions}</Descriptions.Item>
           <Descriptions.Item label="Experience Required">{job.experience}</Descriptions.Item>
@@ -44,21 +46,23 @@ class JobDetail extends React.Component {
           </Descriptions.Item>
           <br></br>
           <Descriptions.Item label="Description">
-    <div style={{ padding: 24, background: '#fff', minHeight: 360, textAlign: 'justify' }}>{job.description}</div>
+    <div className="custom-job-description">{job.description}</div>
           </Descriptions.Item>
         </Descriptions>
         <Row>
-            <Col
-              span={24}
-              style={{
-                textAlign: 'right',
-              }}
-            >
-              <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
-              <Link to={`/apply_job/${parseInt(this.props.match.params.job_id)}`} >APPLY</Link>
+            <Col span={24}>
+              <div className="custom-bottom-btn">
+              <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-job">
+              <Link to={`/apply_job/${parseInt(this.props.match.params.job_id)}`} >APPLY JOB</Link>
               </Button>
+              <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">
+              <Link to={`/apply_job/${parseInt(this.props.match.params.job_id)}`} >APPLY via LINKEDIN</Link>
+              </Button>
+              </div>
             </Col>
           </Row>
+        </div>
+        
         </div>
     );
   }
