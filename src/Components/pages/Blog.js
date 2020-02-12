@@ -43,7 +43,7 @@ render() {
                     </Descriptions.Item>
                     <Descriptions.Item>
                     <img 
-                    src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=150"
+                    src={`https://shoppify-career.herokuapp.com/${blog.image}`}
                     alt="new"
                     style={{ marginLeft: '185%' }}
                     />
@@ -54,7 +54,7 @@ render() {
                 <Descriptions>
                     <Descriptions.Item>
                     <img 
-                    src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=150"
+                    src={`https://shoppify-career.herokuapp.com/${blog.image}`}
                     alt="new"
                     />
                     </Descriptions.Item>
