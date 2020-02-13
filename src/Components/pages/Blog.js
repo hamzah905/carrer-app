@@ -22,68 +22,54 @@ render() {
     var { blogs } = this.state;
     console.log(blogs);
     return(
-        <div>
-        <div className='logo-with-title'>
-            <img src={Logo} className="App-logo" alt="logo" />
-            <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>BLOGS</h2>
+    <div className="container">
+        <div className="custom-header">
+            <div className="custom-logo">   
+                <img src={Logo} className="App-logo" alt="logo" />
+                    <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>BLOGS</h2>
+            </div>
         </div>
-        <br></br>
-        <hr></hr>
-        <br></br>
-        <br></br>
+
        { blogs.map((blog, index)=>
-        <div key = {index}>
+        <div key = {index} className="custom-detail-section custom-blog-section">
 
             {
                 index%2 ? 
                 <Descriptions>
-                    <Descriptions.Item>
+                    <Descriptions.Item className="custom-blog-content-right">
                     <h2>{blog.title}</h2>
-                    <div style={{ padding: 1, background: '#fff', minHeight: 160, textAlign: 'justify',  minWidth: 640 }}>{blog.description}</div>
+                    <div>{blog.description}</div>
                     </Descriptions.Item>
-                    <Descriptions.Item>
-                    <img 
-                    src={`https://shoppify-career.herokuapp.com/${blog.image}`}
-                    alt="new"
-                    style={{ marginLeft: '185%' }}
-                    />
+                    <Descriptions.Item className="custom-blog-img">
+                    <img src={`https://shoppify-career.herokuapp.com/${blog.image}`} alt="new"/>
                     </Descriptions.Item>
                 </Descriptions>
                 :
-                <div>
                 <Descriptions>
-                    <Descriptions.Item>
-                    <img 
-                    src={`https://shoppify-career.herokuapp.com/${blog.image}`}
-                    alt="new"
-                    />
+                    <Descriptions.Item className="custom-blog-img">
+                    <img src={`https://shoppify-career.herokuapp.com/${blog.image}`} alt="new"/>
                     </Descriptions.Item>
-                    <Descriptions.Item>
+                  
+                    <Descriptions.Item className="custom-blog-content-left">
                     <h2>{blog.title}</h2>
-                    <div style={{ padding: 1, background: '#fff', minHeight: 160, textAlign: 'justify' }}>{blog.description}</div>
+                    <div>{blog.description}</div>
                     </Descriptions.Item>
                 </Descriptions>
-                <br></br>
-                <hr style={{ borderTop: '1px rgba(0, 0, 0, 0.1)' }}></hr>
-                </div>
             }
         </div>
         )}
             
         <Row>
-            <Col
-            span={24}
-            style={{
-                textAlign: 'right',
-                marginTop: '10%',
-            }}
-            >
-            <Button type="primary  primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
+            <Col span={24}>
+            <div className="custom-bottom-btn">
+            <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-job">
                 <Link to={`/jobs`} >VIEW JOBS</Link>
-            </Button>
+                 </Button>
+            </div>
+            
             </Col>
         </Row>
-        </div>
+    </div>
     );
     }
 }

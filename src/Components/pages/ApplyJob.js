@@ -156,13 +156,13 @@ class ApplyJobForm extends React.Component {
                   message: 'Input something!',
                 },
               ],
-            })(<Input type="file"  style={{ minHeight: '36px' }} />)}
+            })(<Input type="file"  className="custom-file-input" />)}
           </Form.Item>
         </Col>
       <Col span={12} key= 'cover_letter'>
       <Form.Item
-      name={`CoverLetter`}
-      label={`CoverLetter`}
+      name={`Cover Letter`}
+      label={`Cover Letter`}
       >
             {getFieldDecorator(`cover_letter`, {
               rules: [
@@ -171,20 +171,17 @@ class ApplyJobForm extends React.Component {
                   message: 'Input something!',
                 },
               ],
-            })(<Input type="file"  style={{ minHeight: '36px' }} />)}
+            })(<Input type="file" className="custom-file-input" />)}
           </Form.Item>
         </Col>
       </Row>
       <Row>
         <Col
-          span={24}
-          style={{
-            textAlign: 'right',
-          }}
-        >
-          <Button type="primary primary-btnn" htmlType="submit" style={{marginRight: '46%'}}>
-            APPLY
-          </Button>
+          span={24}>
+            <div className="custom-bottom-btn">
+            <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit">APPLY
+            </Button>
+            </div>
         </Col>
       </Row>
     </Form>
