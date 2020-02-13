@@ -39,9 +39,9 @@ class ApplyJobForm extends React.Component {
 
     <div className="container">
       <div className="custom-header">
-      <div className="custom-logo">
-        <img src={Logo} className="App-logo" alt="logo" />
-        <h2>APPLY JOB</h2>
+        <div className="custom-logo">
+          <img src={Logo} className="App-logo" alt="logo" />
+          <h2 className="page-title">APPLY JOB</h2>
         </div>
       </div>
 

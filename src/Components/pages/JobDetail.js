@@ -24,13 +24,13 @@ class JobDetail extends React.Component {
 
     var { job } = this.state;
     return(
-        <div className="container">
-          <div className="custom-header">
-                <div className="custom-logo">
-              <img src={Logo} className="App-logo" alt="logo" />
-                <h2>JOB DETAIL</h2>
-            </div>
+      <div className="container">
+        <div className="custom-header">
+          <div className="custom-logo">
+            <img src={Logo} className="App-logo" alt="logo" />
+            <h2 className="page-title">JOB DETAIL</h2>
           </div>
+        </div>
        
       <div className="custom-detail-heading">
         <h1>{job.title}</h1>

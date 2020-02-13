@@ -26,12 +26,14 @@ const ContactUsForm = () => {
 
   return (
     <Form {...layout} name="nest-messages" onSubmit={onSubmit} validatemessages={validatemessages}>
-    <div className='logo-with-title' style={{marginLeft: '36%'} }>
-      <img src={Logo} className="App-logo" alt="logo" />
-      <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>CONTACT US</h2>
+
+    <div className="custom-header">
+        <div className="custom-logo">   
+            <img src={Logo} className="App-logo" alt="logo" />
+                <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>CONTACT</h2>
+        </div>
     </div>
-    <br></br>
-    <hr></hr>
+
     <br></br>
     <br></br>
       <Form.Item

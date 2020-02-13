@@ -27,11 +27,10 @@ class Jobs extends React.Component {
         <div className="container">
             <div className="custom-header">
                 <div className="custom-logo">
-                    <img src={Logo} className="App-logo" alt="logo" />
-                    <h2>JOBS</h2>
+                <img src={Logo} className="App-logo" alt="logo" />
+                <h2 className="page-title">JOBS</h2>
                 </div>
             </div>
-        
 
        { jobs.map((job, index)=>
         <div key = {index}>

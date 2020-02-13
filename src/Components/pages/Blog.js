@@ -23,12 +23,12 @@ render() {
     console.log(blogs);
     return(
     <div className="container">
-        <div className="custom-header">
-            <div className="custom-logo">   
-                <img src={Logo} className="App-logo" alt="logo" />
-                    <h2 style={{marginLeft: '1%', paddingTop: '4px'}}>BLOGS</h2>
-            </div>
+      <div className="custom-header">
+        <div className="custom-logo">
+          <img src={Logo} className="App-logo" alt="logo" />
+          <h2 className="page-title">BLOG</h2>
         </div>
+      </div>
 
        { blogs.map((blog, index)=>
         <div key = {index} className="custom-detail-section custom-blog-section">

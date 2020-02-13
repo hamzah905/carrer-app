@@ -381,3 +381,7 @@ align-items: center;
   outline: transparent;
   box-shadow:none;
 }
+.page-title{
+  margin: auto;
+  padding: 5px;
+}
