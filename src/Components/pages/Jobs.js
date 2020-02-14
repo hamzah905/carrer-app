@@ -92,7 +92,7 @@ class Jobs extends React.Component {
                         <p className="custom-job-location">{job.description}</p>
                     </div>
                     <div className="custom-apply-btn">
-                        <Button type="btn primary-btn" ><Link to={`/apply_job/${job.id}`} >APPLY</Link></Button>
+                        <Button type="btn primary-btn" ><Link to={`/jobs/${job.id}`} >APPLY</Link></Button>
                     </div>
                 </div>
             </div>
