@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Form, Row, Col, Input, Button, message, Upload } from "antd";
+import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
 // import Avatar from './UploadButton';
 import Logo from "../.././Logo.png";
 import {baseURL} from "../.././utils";
 
 class ApplyJobForm extends React.Component {
-  state = { cvFile: null, coverLetterFile: null };
+  state = { cvFile: null, coverLetterFile: null, loading: false };
   onSelectCvFile = file => {
     console.log(file,'cv file')
     this.setState({ cvFile: file });
@@ -34,6 +34,7 @@ class ApplyJobForm extends React.Component {
       Object.entries(user).forEach(([key, value]) => {
         params[`user[${key}]`] = value;
       });
+      this.setState({loading: true})
       axios
         .post(
           `${baseURL}/jobs/${parseInt(
@@ -50,6 +51,7 @@ class ApplyJobForm extends React.Component {
         .then(res => {
           console.log(res);
           console.log(res.data);
+          this.setState({ loading: false });
           this.props.history.push("/jobs");
           message.success("Job Applied Sucessfully", 2);
         });
@@ -68,6 +70,8 @@ class ApplyJobForm extends React.Component {
     const { cvFile, coverLetterFile } = this.state;
     return (
       <div className="container">
+
+    <Spin tip="Loading..." className="spiner" spinning={this.state.loading}>
         <div className="custom-header">
           <div className="custom-logo">
             <img src={Logo} className="App-logo" alt="logo" />
@@ -223,6 +227,7 @@ class ApplyJobForm extends React.Component {
             </Row>
           </Form>
         </div>
+        </Spin>
       </div>
     );
   }
