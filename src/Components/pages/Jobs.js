@@ -22,6 +22,9 @@ class Jobs extends React.Component {
               var jobs = res.data.data;
               this.setState({ jobs });
             })
+            .catch(error => {
+                this.setState({ jobs: [] });
+            });
         });
     }
   
