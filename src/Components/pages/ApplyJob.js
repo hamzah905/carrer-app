@@ -34,7 +34,7 @@ class ApplyJobForm extends React.Component {
       });
       axios
         .post(
-          `https://shoppify-career.herokuapp.com/jobs/${parseInt(
+          `https://storecareersapp.com/jobs/${parseInt(
             this.props.match.params.job_id
           )}/apply?url=messanger-store.myshopify.com`,
           formData,

@@ -24,7 +24,7 @@ class Jobs extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`https://shoppify-career.herokuapp.com/jobs?url=messanger-store.myshopify.com`)
+      axios.get(`https://storecareersapp.com/jobs?url=messanger-store.myshopify.com`)
         .then(res => {
           var jobs = res.data.data;
           this.setState({ jobs });

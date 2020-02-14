@@ -11,7 +11,7 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`https://shoppify-career.herokuapp.com/blogs?url=messanger-store.myshopify.com`)
+      axios.get(`https://storecareersapp.com/blogs?url=messanger-store.myshopify.com`)
         .then(res => {
           var blogs = res.data.data;
           this.setState({ blogs });
