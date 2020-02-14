@@ -31,7 +31,7 @@ render() {
         </div>
       </div>
 
-    <Spin tip="Loading..." spinning={this.state.loading}>
+    <Spin tip="Loading..." className="spiner" spinning={this.state.loading}>
        { blogs.map((blog, index)=>
         <div key = {index} className="custom-detail-section custom-blog-section">
 

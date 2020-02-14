@@ -388,5 +388,8 @@ align-items: center;
 
 .custom-search-btn{
   text-align: center;
+}
 
+.spiner{
+  color: black;
 }

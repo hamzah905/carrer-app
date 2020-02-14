@@ -82,7 +82,7 @@ class Jobs extends React.Component {
                         </Row>
                     </Form>
                 </div>
-    <Spin tip="Loading..." spinning={this.state.loading}>
+    <Spin tip="Loading..." className="spiner" spinning={this.state.loading}>
        { jobs.map((job, index)=>
         <div key = {index}>
             <div className="row">
