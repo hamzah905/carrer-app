@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Input, Button, message, Upload } from "antd";
 // import Avatar from './UploadButton';
 import Logo from "../.././Logo.png";
+import {baseURL} from "../.././utils";
+
 class ApplyJobForm extends React.Component {
   state = { cvFile: null, coverLetterFile: null };
   onSelectCvFile = file => {
@@ -34,7 +36,7 @@ class ApplyJobForm extends React.Component {
       });
       axios
         .post(
-          `https://storecareersapp.com/jobs/${parseInt(
+          `${baseURL}/jobs/${parseInt(
             this.props.match.params.job_id
           )}/apply?url=messanger-store.myshopify.com`,
           formData,

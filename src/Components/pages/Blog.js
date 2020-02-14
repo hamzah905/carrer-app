@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import { Row, Col, Button, Descriptions } from 'antd';
 import Logo from "../.././Logo.png";
+import {baseURL} from "../.././utils";
 
 class Blog extends React.Component {
     state = {
@@ -11,7 +12,7 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`https://storecareersapp.com/blogs?url=messanger-store.myshopify.com`)
+      axios.get(`${baseURL}/blogs?url=messanger-store.myshopify.com`)
         .then(res => {
           var blogs = res.data.data;
           this.setState({ blogs });

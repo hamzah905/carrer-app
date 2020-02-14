@@ -6,6 +6,7 @@ import {
     Link
   } from "react-router-dom";
 import Logo from "../.././Logo.png";
+import {baseURL} from "../.././utils";
 
 class Jobs extends React.Component {
     state = {
@@ -15,7 +16,7 @@ class Jobs extends React.Component {
         event.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log('Received values of form: ', values);
-            axios.get(`https://shoppify-career.herokuapp.com/jobs/search_by_profession?profession=${values.profession}&title=${values.title}&location=${values.location}`, values)
+            axios.get(`${baseURL}/jobs/search_by_profession?profession=${values.profession}&title=${values.title}&location=${values.location}`, values)
             .then(res => {
               var jobs = res.data.data;
               this.setState({ jobs });
@@ -24,7 +25,7 @@ class Jobs extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`https://storecareersapp.com/jobs?url=messanger-store.myshopify.com`)
+      axios.get(`${baseURL}/jobs?url=messanger-store.myshopify.com`)
         .then(res => {
           var jobs = res.data.data;
           this.setState({ jobs });

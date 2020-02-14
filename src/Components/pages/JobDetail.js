@@ -6,6 +6,7 @@ import {
 
 import { Row, Col, Button, Descriptions } from 'antd';
 import Logo from "../.././Logo.png";
+import {baseURL} from "../.././utils";
 
 class JobDetail extends React.Component {
     
@@ -14,7 +15,7 @@ class JobDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`https://storecareersapp.com/jobs/${parseInt(this.props.match.params.job_id)}?url=messanger-store.myshopify.com`)
+    axios.get(`${baseURL}/jobs/${parseInt(this.props.match.params.job_id)}?url=messanger-store.myshopify.com`)
       .then(res => {
         var job = res.data.data;
         this.setState({ job });
