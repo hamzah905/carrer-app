@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import { Link, withRouter } from "react-router-dom";
 
-import { Row, Col, Button, Descriptions } from 'antd';
+import { Row, Col, Button, Descriptions, Spin } from 'antd';
 import Logo from "../.././Logo.png";
 import {baseURL} from "../.././utils";
 
@@ -15,7 +15,7 @@ class Blog extends React.Component {
       axios.get(`${baseURL}/blogs?url=messanger-store.myshopify.com`)
         .then(res => {
           var blogs = res.data.data;
-          this.setState({ blogs });
+          this.setState({ blogs, loading: false  });
         })
     }
 
@@ -31,6 +31,7 @@ render() {
         </div>
       </div>
 
+    <Spin tip="Loading..." spinning={this.state.loading}>
        { blogs.map((blog, index)=>
         <div key = {index} className="custom-detail-section custom-blog-section">
 
@@ -59,6 +60,7 @@ render() {
             }
         </div>
         )}
+        </Spin>
             
         <Row>
             <Col span={24}>

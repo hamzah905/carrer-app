@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { Form, Row, Col, Input, Button} from 'antd';
+import { Form, Row, Col, Input, Button, Spin} from 'antd';
 
 import {
     Link
@@ -10,7 +10,8 @@ import {baseURL} from "../.././utils";
 
 class Jobs extends React.Component {
     state = {
-      jobs: []
+      jobs: [],
+      loading: true,
     }
     handleSubmit = event => {
         event.preventDefault();
@@ -25,10 +26,11 @@ class Jobs extends React.Component {
     }
   
     componentDidMount() {
+    //   this.setState({loading: true})
       axios.get(`${baseURL}/jobs?url=messanger-store.myshopify.com`)
         .then(res => {
           var jobs = res.data.data;
-          this.setState({ jobs });
+          this.setState({ jobs, loading: false });
         })
     }
 
@@ -80,7 +82,7 @@ class Jobs extends React.Component {
                         </Row>
                     </Form>
                 </div>
-
+    <Spin tip="Loading..." spinning={this.state.loading}>
        { jobs.map((job, index)=>
         <div key = {index}>
             <div className="row">
@@ -96,6 +98,7 @@ class Jobs extends React.Component {
             </div>
         </div>
        )}
+       </Spin>
         </div>
     );
     }

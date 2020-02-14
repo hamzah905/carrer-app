@@ -169,7 +169,7 @@ class ApplyJobForm extends React.Component {
                       accept=".pdf"
                     >
                       <Button
-                        style={{ marginLeft: 10 }}
+                        style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
                         type="default"
                         size="default"
                         ghost
@@ -196,7 +196,7 @@ class ApplyJobForm extends React.Component {
                       accept=".pdf"
                     >
                       <Button
-                        style={{ marginLeft: 10 }}
+                        style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
                         type="default"
                         size="default"
                         ghost
