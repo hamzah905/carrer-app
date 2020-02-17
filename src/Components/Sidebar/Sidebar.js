@@ -11,6 +11,7 @@ import Blog from '../pages/Blog'
 import Home from '../pages/Home'
 import Careers from '../pages/Careers'
 import {  Layout, Breadcrumb } from 'antd';
+import {baseURL} from "../.././utils";
 // import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
 
@@ -25,13 +26,12 @@ class Sidebar extends Component {
   };
 
   render() {
-    debugger
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider>
           <div className="logo" />
           <div>
-            <img src="https://storecareersapp.com/uploads/setting/image/1/careers-banner.png" alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
+            <img src={`${baseURL}${this.props.image}`} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
           </div>
         </Sider>
         <Layout>

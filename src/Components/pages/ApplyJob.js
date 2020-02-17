@@ -2,12 +2,11 @@ import React from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
-// import Avatar from './UploadButton';
 import Logo from "../.././Logo.png";
 import {baseURL} from "../.././utils";
 
 class ApplyJobForm extends React.Component {
-  state = { cvFile: null, coverLetterFile: null, loading: false };
+  state = { cvFile: null, coverLetterFile: null, videoFile: null, loading: false };
   onSelectCvFile = file => {
     console.log(file,'cv file')
     this.setState({ cvFile: file });
@@ -15,6 +14,10 @@ class ApplyJobForm extends React.Component {
   onSelectCoverFile = file => {
     console.log(file,'cover letter file')
     this.setState({ coverLetterFile: file });
+  };
+  onSelectVideoFile = file => {
+    console.log(file,'cover letter file')
+    this.setState({ videoFile: file });
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -25,12 +28,13 @@ class ApplyJobForm extends React.Component {
         last_name: values.last_name,
         email: values.email,
         contact_no: values.contact_no,
-        address: values.address
-        // linkedin_url: values.linkedin_url
+        address: values.address,
+        linkedin_url: values.linkedin_url
       };
       const formData = new FormData();
       formData.append("resume", this.state.cvFile);
       formData.append("cover_letter", this.state.coverLetterFile);
+      formData.append("video", this.state.videoFile);
       const params = {};
       Object.entries(user).forEach(([key, value]) => {
         params[`user[${key}]`] = value;
@@ -54,21 +58,28 @@ class ApplyJobForm extends React.Component {
           console.log(res.data);
           this.setState({ loading: false });
           this.props.history.push("/jobs");
-          message.success("Job Applied Sucessfully", 2);
+          message.success("Job Applied Sucessfully", 2);  
+        })
+        .catch(error => {
+            event.preventDefault();
+            if (error.response.data.errors) {
+              var hash = error.response.data.errors
+              Object.keys(hash).forEach(function (key) { 
+                message.error(key.replace('_', ' ') + " " + hash[key], 2);
+              })
+            }
+            else if (error.response.data.message) {
+              message.error(error.response.data.message, 2);
+            }else {
+              message.error('Something went wrong!');
+            }
+            this.setState({ loading: false  });
         });
-      // axios.post(`https://shoppify-career.herokuapp.com/jobs/${parseInt(this.props.match.params.job_id)
-      //     }/apply?url=messanger-store.myshopify.com`, { user })
-      //     .then(res => {
-      //         console.log(res);
-      //         console.log(res.data);
-      //         this.props.history.push('/jobs');
-      //         message.success('Job Applied Sucessfully', 2);
-      //     })
     });
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { cvFile, coverLetterFile } = this.state;
+    const { cvFile, coverLetterFile, videoFile } = this.state;
     return (
       <div className="container">
 
@@ -136,26 +147,12 @@ class ApplyJobForm extends React.Component {
               </Col>
               <Col span={12} key="linkedin-url">
                 <Form.Item name={`LinkedinUrl`} label={`Linkedin Url`}>
-                  {getFieldDecorator(`linkedin_url`, {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Input something!"
-                      }
-                    ]
-                  })(<Input placeholder="placeholder" />)}
+                  {getFieldDecorator(`linkedin_url`)(<Input placeholder="placeholder" />)}
                 </Form.Item>
               </Col>
               <Col span={12} key="address">
                 <Form.Item name={`Address`} label={`Address`}>
-                  {getFieldDecorator(`address`, {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Input something!"
-                      }
-                    ]
-                  })(<Input placeholder="placeholder" />)}
+                  {getFieldDecorator(`address`)(<Input placeholder="placeholder" />)}
                 </Form.Item>
               </Col>
               <Col span={12} key="cv">
@@ -171,7 +168,7 @@ class ApplyJobForm extends React.Component {
                         showPreviewIcon: false,
                         showRemoveIcon: false
                       }}
-                      accept=".pdf"
+                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     >
                       <Button
                         style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
@@ -198,7 +195,34 @@ class ApplyJobForm extends React.Component {
                         showPreviewIcon: false,
                         showRemoveIcon: false
                       }}
-                      accept=".pdf"
+                      accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    >
+                      <Button
+                        style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
+                        type="default"
+                        size="default"
+                        ghost
+                      >
+                        {"Select File"}
+                      </Button>
+                    </Upload>
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12} key="video">
+                <Form.Item name={`Video`} label={`Video`}>
+                  {getFieldDecorator(`video`)(
+                    <Upload
+                      fileList={videoFile ? [videoFile] : []}
+                      beforeUpload={f => {
+                        this.onSelectVideoFile(f);
+                        return false;
+                      }}
+                      showUploadList={{
+                        showPreviewIcon: false,
+                        showRemoveIcon: false
+                      }}
+                      accept="video/*"
                     >
                       <Button
                         style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
@@ -218,10 +242,13 @@ class ApplyJobForm extends React.Component {
                 <div className="custom-bottom-btn">
                   <Button
                     type="primary primary-btnn"
-                    className="custom-apply-btn"
+                    className="apply-btn-job"
                     htmlType="submit"
                   >
                     APPLY
+                  </Button>
+                  <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
+                    {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
                   </Button>
                 </div>
               </Col>
