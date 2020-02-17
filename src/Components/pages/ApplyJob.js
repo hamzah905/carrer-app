@@ -26,6 +26,7 @@ class ApplyJobForm extends React.Component {
         email: values.email,
         contact_no: values.contact_no,
         address: values.address
+        // linkedin_url: values.linkedin_url
       };
       const formData = new FormData();
       formData.append("resume", this.state.cvFile);
@@ -133,9 +134,9 @@ class ApplyJobForm extends React.Component {
                   })(<Input placeholder="12345678" />)}
                 </Form.Item>
               </Col>
-              <Col span={12} key="requirnment">
-                <Form.Item name={`Requirnment`} label={`Requirnment`}>
-                  {getFieldDecorator(`requirnment`, {
+              <Col span={12} key="linkedin-url">
+                <Form.Item name={`LinkedinUrl`} label={`Linkedin Url`}>
+                  {getFieldDecorator(`linkedin_url`, {
                     rules: [
                       {
                         required: true,

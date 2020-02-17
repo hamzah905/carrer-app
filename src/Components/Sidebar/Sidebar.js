@@ -11,7 +11,7 @@ import Blog from '../pages/Blog'
 import Home from '../pages/Home'
 import Careers from '../pages/Careers'
 import {  Layout, Breadcrumb } from 'antd';
-import SideImage from "../.././careers-banner.png";
+// import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
 
 class Sidebar extends Component {
@@ -25,12 +25,13 @@ class Sidebar extends Component {
   };
 
   render() {
+    debugger
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider>
           <div className="logo" />
           <div>
-            <img src={SideImage} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
+            <img src="https://storecareersapp.com/uploads/setting/image/1/careers-banner.png" alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
           </div>
         </Sider>
         <Layout>
@@ -54,7 +55,7 @@ class Sidebar extends Component {
                 <Route path="/jobs" exact>
                   <Jobs />
                 </Route>
-                <Route path="/apply_job/:job_id" exact>
+                <Route path="/jobs/:job_id/apply" exact>
                   <ApplyJob />
                 </Route>
                 <Route path="/blog" exact>
