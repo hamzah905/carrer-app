@@ -65,7 +65,7 @@ class ApplyJobForm extends React.Component {
             if (error.response.data.errors) {
               var hash = error.response.data.errors
               Object.keys(hash).forEach(function (key) { 
-                message.error(key.replace('_', ' ') + " " + hash[key], 2);
+                message.error(key.replace('_', ' ') + " " + hash[key][0], 2);
               })
             }
             else if (error.response.data.message) {
@@ -103,7 +103,7 @@ class ApplyJobForm extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Input something!"
+                        message: "first name can't be blank!"
                       }
                     ]
                   })(<Input placeholder="Tom" />)}
@@ -115,7 +115,7 @@ class ApplyJobForm extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Input something!"
+                        message: "last name can't be blank!"
                       }
                     ]
                   })(<Input placeholder="Cruse" />)}
@@ -127,7 +127,7 @@ class ApplyJobForm extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Input something!"
+                        message: "email can't be blank!"
                       }
                     ]
                   })(<Input placeholder="example@example.com" />)}
@@ -139,7 +139,7 @@ class ApplyJobForm extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: "Input something!"
+                        message: "contact number can't be blank!"
                       }
                     ]
                   })(<Input placeholder="12345678" />)}
