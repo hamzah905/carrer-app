@@ -12,7 +12,7 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`${baseURL}/blogs?url=messanger-store.myshopify.com`)
+      axios.get(`${baseURL}/blogs?url=careers-app.myshopify.com`)
         .then(res => {
           var blogs = res.data.data;
           this.setState({ blogs, loading: false  });

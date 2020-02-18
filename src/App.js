@@ -24,7 +24,21 @@ class MyProvider extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${baseURL}/settings?url=messanger-store.myshopify.com`)
+debugger
+    // axios.get('api link').then(data => {
+    //   let live = data
+    //   axios.get(`${baseURL}/settings?url=careers-app.myshopify.com`)
+    //   .then(res2 => {
+    //     var response2 = res2.data.data;
+    //     this.setState({ landing_page: response.landing_page,
+    //     layout_color: response.layout_color,
+    //     image: response.image,
+    //     font_family: response.font_family,
+    //     font_size: response.font_size
+    //        })
+    //   })
+
+    axios.get(`${baseURL}/settings?url=careers-app.myshopify.com`)
       .then(res => {
         var response = res.data.data;
         this.setState({ landing_page: response.landing_page,

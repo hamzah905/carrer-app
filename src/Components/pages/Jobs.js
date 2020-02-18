@@ -31,7 +31,7 @@ class Jobs extends React.Component {
   
     componentDidMount() {
     //   this.setState({loading: true})
-      axios.get(`${baseURL}/jobs?url=messanger-store.myshopify.com`)
+      axios.get(`${baseURL}/jobs?url=careers-app.myshopify.com`)
         .then(res => {
           var jobs = res.data.data;
           this.setState({ jobs, loading: false });
