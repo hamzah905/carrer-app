@@ -18,10 +18,10 @@ class Jobs extends React.Component {
         this.props.form.validateFields((err, values) => {
             console.log('Received values of form: ', values);
               this.setState({loading: true})
-            axios.get(`${baseURL}/jobs/search_by_profession?profession=${values.profession}&title=${values.title}&location=${values.location}`, values)
+            axios.get(`${baseURL}/jobs/search_by_name?profession=${values.profession}&title=${values.title}&location=${values.location}`, values)
             .then(res => {
               var jobs = res.data.data;
-              this.setState({ jobs });
+              this.setState({ jobs, loading: false  });
             })
             .catch(error => {
                 this.setState({ jobs: [], loading: false  });
