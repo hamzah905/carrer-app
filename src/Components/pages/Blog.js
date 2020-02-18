@@ -12,6 +12,8 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
+        debugger
+        console.log('=========debugger=========');
       axios.get(`${baseURL}/blogs?url=careers-app.myshopify.com`)
         .then(res => {
           var blogs = res.data.data;

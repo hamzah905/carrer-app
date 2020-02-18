@@ -30,6 +30,8 @@ class Jobs extends React.Component {
     }
   
     componentDidMount() {
+        console.log('=========debugger=========');
+        debugger
     //   this.setState({loading: true})
       axios.get(`${baseURL}/jobs?url=careers-app.myshopify.com`)
         .then(res => {
