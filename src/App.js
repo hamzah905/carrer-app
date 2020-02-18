@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
+
+import { Spin } from "antd";
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar/Sidebar.js'
 import './App.css';
@@ -43,6 +45,13 @@ class MyProvider extends Component {
 }
 
 class App extends Component {
+  state = { loading: true };
+  componentDidMount() {
+    setTimeout(() => { 
+          this.setState({loading: false})
+    }, 500);
+}
+
   render() {
     return (
       <MyProvider>
@@ -50,10 +59,12 @@ class App extends Component {
       <MyContext.Consumer>
         {(context) => (
           <React.Fragment>
-        <div style={{ fontFamily: `${context.state.font_family}` }}>
-          <Navbar />
-          <Sidebar image={context.state.image}/>
-        </div>
+          <Spin tip="Loading..." className="spiner" spinning={this.state.loading}>
+            <div style={{ fontFamily: `${context.state.font_family}` }}>
+              <Navbar />
+              <Sidebar image={context.state.image}/>
+            </div>
+          </Spin>
             </React.Fragment>
           )}
         </MyContext.Consumer>
