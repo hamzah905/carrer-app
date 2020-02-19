@@ -28,7 +28,7 @@ class Navbar extends Component {
         	</div>
         	<div className="menuCon">
         		<div className="leftMenu">
-	        		<LeftMenu />
+	        		<LeftMenu url_param={this.props.url_param} />
 				    </div>
 				    {/* <div className="rightMenu">
 	        			<RightMenu />

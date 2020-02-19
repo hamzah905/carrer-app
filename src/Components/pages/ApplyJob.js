@@ -1,9 +1,27 @@
 import React from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
+import { Form, Row, Col, Input, Button, message, Upload, Spin, Icon } from "antd";
 import Logo from "../.././Logo.png";
 import {baseURL} from "../.././utils";
+
+const props = {
+  name: 'file',
+  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  headers: {
+    authorization: 'authorization-text',
+  },
+  onChange(info) {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+};
 
 class ApplyJobForm extends React.Component {
   state = { cvFile: null, coverLetterFile: null, videoFile: null, loading: false };
@@ -22,7 +40,7 @@ class ApplyJobForm extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log("Received values of form: ", values);
+      if(!err){      console.log("Received values of form: ", values);
       const user = {
         first_name: values.first_name,
         last_name: values.last_name,
@@ -31,6 +49,10 @@ class ApplyJobForm extends React.Component {
         address: values.address,
         linkedin_url: values.linkedin_url
       };
+      const job_field = {}
+      this.props.form_fields.map((field) =>
+        job_field[field] = values[field]
+      );
       const formData = new FormData();
       formData.append("resume", this.state.cvFile);
       formData.append("cover_letter", this.state.coverLetterFile);
@@ -39,12 +61,16 @@ class ApplyJobForm extends React.Component {
       Object.entries(user).forEach(([key, value]) => {
         params[`user[${key}]`] = value;
       });
+      Object.entries(job_field).forEach(([key, value]) => {
+        params[`job_field[${key}]`] = value;
+      });
+      debugger
       this.setState({loading: true})
       axios
         .post(
           `${baseURL}/jobs/${parseInt(
             this.props.match.params.job_id
-          )}/apply?url=messanger-store.myshopify.com`,
+          )}/apply?url=careers-app.myshopify.com`,
           formData,
           { params },
           {
@@ -75,11 +101,14 @@ class ApplyJobForm extends React.Component {
             }
             this.setState({ loading: false  });
         });
+      }
     });
   };
+  
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { cvFile, coverLetterFile, videoFile } = this.state;
+    const { cvFile, coverLetterFile } = this.state;
+    console.log(this.props);
     return (
       <div className="container">
 
@@ -155,10 +184,28 @@ class ApplyJobForm extends React.Component {
                   {getFieldDecorator(`address`)(<Input placeholder="placeholder" />)}
                 </Form.Item>
               </Col>
+
+            { this.props.form_fields.map((field)=>
+              <Col span={12} key={`${field}`}>
+                <Form.Item name={`${field}`} label={`${field}`}>
+                  {getFieldDecorator(`${field}`)(<Input placeholder="placeholder" />)}
+                </Form.Item>
+              </Col>
+            )}
+
+              {this.props.resume ?
               <Col span={12} key="cv">
-                <Form.Item name={`CV`} label={`CV`}>
-                  {getFieldDecorator(`cv`)(
-                    <Upload
+                <Form.Item name={`CV`} label={`CV`} required={true}>
+                  {getFieldDecorator(`cv`, {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Resume can't be blank!"
+                      }
+                    ]
+                  })(
+                    <Upload  {...props}
+                      required={true}
                       fileList={cvFile ? [cvFile] : []}
                       beforeUpload={f => {
                         this.onSelectCvFile(f);
@@ -182,10 +229,14 @@ class ApplyJobForm extends React.Component {
                   )}
                 </Form.Item>
               </Col>
+              :
+              <div></div>
+              }
+              {this.props.cover_letter ?
               <Col span={12} key="cover_letter">
                 <Form.Item name={`Cover Letter`} label={`Cover Letter`}>
                   {getFieldDecorator(`cover_letter`)(
-                    <Upload
+                    <Upload  {...props}
                       fileList={coverLetterFile ? [coverLetterFile] : []}
                       beforeUpload={f => {
                         this.onSelectCoverFile(f);
@@ -209,33 +260,50 @@ class ApplyJobForm extends React.Component {
                   )}
                 </Form.Item>
               </Col>
+              :
+              <div></div>
+              }
+              {this.props.introductory_video ?
               <Col span={12} key="video">
                 <Form.Item name={`Video`} label={`Video`}>
                   {getFieldDecorator(`video`)(
-                    <Upload
-                      fileList={videoFile ? [videoFile] : []}
-                      beforeUpload={f => {
-                        this.onSelectVideoFile(f);
-                        return false;
-                      }}
-                      showUploadList={{
-                        showPreviewIcon: false,
-                        showRemoveIcon: false
-                      }}
-                      accept="video/*"
-                    >
-                      <Button
-                        style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
-                        type="default"
-                        size="default"
-                        ghost
-                      >
-                        {"Select File"}
-                      </Button>
+                    // <Upload  {...props}
+                    //   fileList={videoFile ? [videoFile] : []}
+                    //   beforeUpload={f => {
+                    //     this.onSelectVideoFile(f);
+                    //     return false;
+                    //   }}
+                    //   showUploadList={{
+                    //     showPreviewIcon: false,
+                    //     showRemoveIcon: false
+                    //   }}
+                    //   accept="video/*"
+                    // >
+                    //   <Button
+                    //     style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
+                    //     type="default"
+                    //     size="default"
+                    //     ghost
+                    //   >
+                    //     {"Select File"}
+                    //   </Button>
+                    // </Upload>
+
+                    <Upload {...props}
+                    // fileList={videoFile ? [videoFile] : []}
+                    beforeUpload={f => {
+                      this.onSelectVideoFile(f);
+                    }}>
+                    <Button>
+                      <Icon type="upload" /> Click to Upload
+                    </Button>
                     </Upload>
                   )}
                 </Form.Item>
               </Col>
+              :
+              <div></div>
+              }
             </Row>
             <Row>
               <Col span={24}>

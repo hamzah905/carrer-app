@@ -12,7 +12,7 @@ import Home from '../pages/Home'
 import Careers from '../pages/Careers'
 import {  Layout, Breadcrumb } from 'antd';
 import {baseURL} from "../.././utils";
-// import SideImage from "../.././careers-banner.png";
+import SideImage from "../.././careers-banner.png";
 const { Content, Footer, Sider } = Layout;
 
 class Sidebar extends Component {
@@ -31,7 +31,12 @@ class Sidebar extends Component {
         <Sider>
           <div className="logo" />
           <div>
-            <img src={`${baseURL}${this.props.image}`} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
+            {
+              this.props.image ?
+                <img src={`${baseURL}${this.props.image}`} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
+              :
+                <img src={SideImage} alt="logo"  style={{ width: '100%', marginTop: '100%' }} />
+            }
           </div>
         </Sider>
         <Layout>
@@ -47,22 +52,27 @@ class Sidebar extends Component {
                   <Home />
                 </Route>
                 <Route path="/careers" exact>
-                  <Careers />
+                  <Careers url_param = {this.props.url_param} />
                 </Route>
                 <Route path="/jobs/:job_id" exact>
-                  <JobDetail />
+                  <JobDetail url_param = {this.props.url_param} />
                 </Route>
                 <Route path="/jobs" exact>
-                  <Jobs />
+                  <Jobs url_param = {this.props.url_param} />
                 </Route>
                 <Route path="/jobs/:job_id/apply" exact>
-                  <ApplyJob />
+                  <ApplyJob
+                   url_param = {this.props.url_param}
+                   introductory_video = {this.props.introductory_video}
+                   resume = {this.props.resume}
+                   cover_letter = {this.props.cover_letter}
+                   form_fields = {this.props.form_fields} />
                 </Route>
                 <Route path="/blog" exact>
-                  <Blog />
+                  <Blog url_param = {this.props.url_param} />
                 </Route>
                 <Route path="/contact_us" exact>
-                  <ContactUs />
+                  <ContactUs url_param = {this.props.url_param} />
                 </Route>
               </Switch>
             </div>

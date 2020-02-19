@@ -54,7 +54,7 @@ class JobDetail extends React.Component {
             <Col span={24}>
               <div className="custom-bottom-btn">
               <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-job">
-              <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY JOB</Link>
+              <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply?url=${this.props.url_param}`} >APPLY JOB</Link>
               </Button>
               </div>
             </Col>

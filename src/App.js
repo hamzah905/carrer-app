@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
 } from "react-router-dom";
 
 import { Spin } from "antd";
@@ -16,37 +16,37 @@ const MyContext = React.createContext();
 // Then create a provider Component
 class MyProvider extends Component {
   state = {
+    url_param: "careers-app.myshopify.com",
     landing_page: "blogs",
     layout_color: "#000000",
     image: `${baseURL}/uploads/setting/image/1/careers-banner.png`,
     font_family: "Roboto",
-    font_size: 5
+    font_size: 5,
+    introductory_video: false,
+    resume: true,
+    cover_letter: false,
+    form_fields: []
   }
 
   componentDidMount() {
 debugger
-    // axios.get('api link').then(data => {
-    //   let live = data
-    //   axios.get(`${baseURL}/settings?url=careers-app.myshopify.com`)
-    //   .then(res2 => {
-    //     var response2 = res2.data.data;
-    //     this.setState({ landing_page: response.landing_page,
-    //     layout_color: response.layout_color,
-    //     image: response.image,
-    //     font_family: response.font_family,
-    //     font_size: response.font_size
-    //        })
-    //   })
+const urlParam = window.location.href.split("=")[1]
 
-    axios.get(`${baseURL}/settings?url=careers-app.myshopify.com`)
+    axios.get(`${baseURL}/settings?url=${urlParam}`)
       .then(res => {
         var response = res.data.data;
-        this.setState({ landing_page: response.landing_page,
+        this.setState({ url_param: urlParam,
+        landing_page: response.landing_page,
         layout_color: response.layout_color,
         image: response.image,
         font_family: response.font_family,
-        font_size: response.font_size });
+        font_size: response.font_size,
+        introductory_video: response.introductory_video,
+        resume: response.resume,
+        cover_letter: response.cover_letter,
+        form_fields: response.form_fields });
       })
+      console.log(this.state)
   }
 
   render() {
@@ -71,12 +71,20 @@ class App extends Component {
       <MyProvider>
       <Router>
       <MyContext.Consumer>
-        {(context) => (
+        {
+        (context) => (
           <React.Fragment>
           <Spin tip="Loading..." className="spiner" spinning={this.state.loading}>
             <div style={{ fontFamily: `${context.state.font_family}` }}>
-              <Navbar />
-              <Sidebar image={context.state.image}/>
+              <Navbar url_param = {context.state.url_param} />
+              <Sidebar 
+              image={context.state.image} 
+              url_param = {context.state.url_param}
+              introductory_video = {context.state.introductory_video}
+              resume = {context.state.resume}
+              cover_letter = {context.state.cover_letter}
+              form_fields = {context.state.form_fields}
+              />
             </div>
           </Spin>
             </React.Fragment>

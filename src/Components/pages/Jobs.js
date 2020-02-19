@@ -3,8 +3,10 @@ import axios from 'axios';
 import { Form, Row, Col, Input, Button, Spin} from 'antd';
 
 import {
-    Link
+    Link, withRouter
   } from "react-router-dom";
+// import queryString from 'query-string';
+
 import Logo from "../.././Logo.png";
 import {baseURL} from "../.././utils";
 
@@ -31,9 +33,8 @@ class Jobs extends React.Component {
   
     componentDidMount() {
         console.log('=========debugger=========');
-        debugger
     //   this.setState({loading: true})
-      axios.get(`${baseURL}/jobs?url=careers-app.myshopify.com`)
+      axios.get(`${baseURL}/jobs?url=${this.props.url_param}`)
         .then(res => {
           var jobs = res.data.data;
           this.setState({ jobs, loading: false });
@@ -94,11 +95,11 @@ class Jobs extends React.Component {
             <div className="row">
                 <div className="custom-detail-section">
                     <div className="custom-job-detail">
-                        <h3 className="custom-job-heading"><Link to={`/jobs/${job.id}`}>{job.title}</Link></h3>
+                        <h3 className="custom-job-heading"><Link to={`/jobs/${job.id}?url=${this.props.url_param}`}>{job.title}</Link></h3>
                         <p className="custom-job-location">{job.description}</p>
                     </div>
                     <div className="custom-apply-btn">
-                        <Button type="btn primary-btn" ><Link to={`/jobs/${job.id}`} >APPLY</Link></Button>
+                        <Button type="btn primary-btn" ><Link to={`/jobs/${job.id}?url=${this.props.url_param}`} >APPLY</Link></Button>
                     </div>
                 </div>
             </div>
@@ -111,4 +112,4 @@ class Jobs extends React.Component {
 }
 const Jobz = Form.create({ name: 'advanced_search' })(Jobs);
 
-export default Jobz;
+export default withRouter(Jobz);

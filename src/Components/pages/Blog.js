@@ -12,7 +12,6 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
-        debugger
         console.log('=========debugger=========');
       axios.get(`${baseURL}/blogs?url=careers-app.myshopify.com`)
         .then(res => {
@@ -67,7 +66,7 @@ render() {
         <Row>
             <Col span={24}>
             <div className="custom-bottom-btn">
-            <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-job">
+            <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-job">
                 <Link to={`/jobs`} >VIEW JOBS</Link>
                  </Button>
             </div>

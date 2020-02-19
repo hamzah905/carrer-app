@@ -11,10 +11,10 @@ class LeftMenu extends Component {
     return (
 			<Menu mode="horizontal">
       	<Menu.Item key="home">
-          <Link to="/">Home</Link>
+          <Link to={`/?url=${this.props.url_param}`}>Home</Link>
         </Menu.Item>
       	<Menu.Item key="career">
-          <Link to="/careers">Careers</Link>
+          <Link to={`/careers?url=${this.props.url_param}`}>Careers</Link>
         </Menu.Item>
         {/* <SubMenu title={<span>Jobs</span>}>
           <MenuItemGroup title="Item 1">
@@ -27,13 +27,13 @@ class LeftMenu extends Component {
           </MenuItemGroup>
         </SubMenu> */}
       	<Menu.Item key="job">
-          <Link to="/jobs">Jobs</Link>
+          <Link to={`/jobs?url=${this.props.url_param}`}>Jobs</Link>
         </Menu.Item>
       	<Menu.Item key="blog">
-          <Link to="/blog">Blog</Link>
+          <Link to={`/blog?url=${this.props.url_param}`}>Blog</Link>
         </Menu.Item>
         <Menu.Item key="alipay">
-          <Link to="/contact_us">Contact Us</Link>
+          <Link to={`/contact_us?url=${this.props.url_param}`}>Contact Us</Link>
         </Menu.Item>
       </Menu>
     );
