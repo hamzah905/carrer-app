@@ -196,7 +196,7 @@
   text-overflow: ellipsis;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
-  height: 40px;
+  /* height: 40px; */
 }
 
 .custom-detail-section form input:active{
@@ -204,7 +204,7 @@
   text-overflow: ellipsis;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
-  height: 40px;
+  /* height: 40px; */
 }
 
 .custom-detail-section form input:hover{

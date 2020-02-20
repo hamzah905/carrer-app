@@ -19,8 +19,12 @@ class Jobs extends React.Component {
         event.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log('Received values of form: ', values);
-              this.setState({loading: true})
-            axios.get(`${baseURL}/jobs/search_by_name?profession=${values.profession}&title=${values.title}&location=${values.location}`, values)
+            this.setState({loading: true})
+            var new_values = {}
+            Object.entries(values).map(([key, val]) => {
+                new_values[key] = (val === undefined) ? "" : val;
+            })
+            axios.get(`${baseURL}/jobs/search_by_name?url=${this.props.url_param}&profession=${new_values.profession}&title=${new_values.title}&location=${new_values.location}`, values)
             .then(res => {
               var jobs = res.data.data;
               this.setState({ jobs, loading: false  });
