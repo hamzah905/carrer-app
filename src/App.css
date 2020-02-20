@@ -238,7 +238,7 @@ align-items: center;
   border: 0px;
   border-radius: 50px;
   box-shadow: 0px 3px 6px #00000036;
-  color: #606060;
+  color: #ffffff;
   font-size: 12px;
   font-weight: 600;
 }
@@ -289,7 +289,7 @@ align-items: center;
   border: 0px;
   border-radius: 50px;
   box-shadow: 0px 3px 6px #00000036;
-  color: #606060;
+  color: #ffffff;
   font-size: 14px;
   text-shadow: transparent;
   width: 180px;
@@ -321,6 +321,10 @@ align-items: center;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
   height: 40px;
+}
+
+.ant-btn:hover, .ant-btn:focus{
+  color: #ffffff;
 }
 
 .custom-detail-section .ant-form input[type='file']{
@@ -365,7 +369,7 @@ align-items: center;
   border: 0px;
   border-radius: 50px;
   box-shadow: 0px 3px 6px #00000036;
-  color: #606060;
+  /* color: #606060; */
   font-size: 14px;
   text-shadow: transparent !important;
   width: 180px;

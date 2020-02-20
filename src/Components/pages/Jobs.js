@@ -32,7 +32,6 @@ class Jobs extends React.Component {
     }
   
     componentDidMount() {
-        console.log('=========debugger=========');
     //   this.setState({loading: true})
       axios.get(`${baseURL}/jobs?url=${this.props.url_param}`)
         .then(res => {
@@ -83,7 +82,7 @@ class Jobs extends React.Component {
                             <Col
                                 span={6}>
                                 <div className="custom-bottom-btn" style={{margin: "5px 0px"}}>
-                                    <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit">Search</Button>
+                                    <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>Search</Button>
                                 </div>
                             </Col>
                         </Row>
@@ -99,7 +98,7 @@ class Jobs extends React.Component {
                         <p className="custom-job-location">{job.description}</p>
                     </div>
                     <div className="custom-apply-btn">
-                        <Button type="btn primary-btn" ><Link to={`/jobs/${job.id}?url=${this.props.url_param}`} >APPLY</Link></Button>
+                        <Button type="btn primary-btn" style={{backgroundColor: this.props.layout_color}} ><Link to={`/jobs/${job.id}?url=${this.props.url_param}`} >APPLY</Link></Button>
                     </div>
                 </div>
             </div>

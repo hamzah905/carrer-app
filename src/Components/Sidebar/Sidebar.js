@@ -55,10 +55,10 @@ class Sidebar extends Component {
                   <Careers url_param = {this.props.url_param} />
                 </Route>
                 <Route path="/jobs/:job_id" exact>
-                  <JobDetail url_param = {this.props.url_param} />
+                  <JobDetail url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
                 <Route path="/jobs" exact>
-                  <Jobs url_param = {this.props.url_param} />
+                  <Jobs url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
                 <Route path="/jobs/:job_id/apply" exact>
                   <ApplyJob
@@ -66,13 +66,14 @@ class Sidebar extends Component {
                    introductory_video = {this.props.introductory_video}
                    resume = {this.props.resume}
                    cover_letter = {this.props.cover_letter}
-                   form_fields = {this.props.form_fields} />
+                   form_fields = {this.props.form_fields}
+                   layout_color = {this.props.layout_color}  />
                 </Route>
                 <Route path="/blog" exact>
-                  <Blog url_param = {this.props.url_param} />
+                  <Blog url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
                 <Route path="/contact_us" exact>
-                  <ContactUs url_param = {this.props.url_param} />
+                  <ContactUs url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
               </Switch>
             </div>

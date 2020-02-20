@@ -29,8 +29,7 @@ class MyProvider extends Component {
   }
 
   componentDidMount() {
-debugger
-const urlParam = window.location.href.split("=")[1]
+    const urlParam = window.location.href.split("=")[1]
 
     axios.get(`${baseURL}/settings?url=${urlParam}`)
       .then(res => {
@@ -79,6 +78,7 @@ class App extends Component {
               <Navbar url_param = {context.state.url_param} />
               <Sidebar 
               image={context.state.image} 
+              layout_color={context.state.layout_color} 
               url_param = {context.state.url_param}
               introductory_video = {context.state.introductory_video}
               resume = {context.state.resume}

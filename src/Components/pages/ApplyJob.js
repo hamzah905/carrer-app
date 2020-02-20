@@ -64,7 +64,6 @@ class ApplyJobForm extends React.Component {
       Object.entries(job_field).forEach(([key, value]) => {
         params[`job_field[${key}]`] = value;
       });
-      debugger
       this.setState({loading: true})
       axios
         .post(
@@ -311,6 +310,7 @@ class ApplyJobForm extends React.Component {
                   <Button
                     type="primary primary-btnn"
                     className="apply-btn-job"
+                    style={{backgroundColor: this.props.layout_color}}
                     htmlType="submit"
                   >
                     APPLY

@@ -53,7 +53,8 @@ class JobDetail extends React.Component {
         <Row>
             <Col span={24}>
               <div className="custom-bottom-btn">
-              <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-job">
+                {console.log(this.props.layout_color)}
+              <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-job" style={{backgroundColor: this.props.layout_color}}>
               <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply?url=${this.props.url_param}`} >APPLY JOB</Link>
               </Button>
               </div>

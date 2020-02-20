@@ -18,7 +18,16 @@ const validatemessages = {
   },
 };
 
-const ContactUsForm = () => {
+
+class ContactUsForm extends React.Component {
+  state = { loading: true };
+  componentDidMount() {
+    setTimeout(() => { 
+          this.setState({loading: false})
+    }, 500);
+}
+
+  render() {
   const onSubmit = values => {
     console.log(values);
     values.preventDefault();
@@ -62,12 +71,13 @@ const ContactUsForm = () => {
         <Input.TextArea placeholder="Your Description" />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
-        <Button type="primary  primary-btnn" htmlType="submit">
+        <Button type="primary  primary-btnn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>
           Submit
         </Button>
       </Form.Item>
     </Form>
   );
+}
 };
 
 export default ContactUsForm;
