@@ -416,3 +416,11 @@ align-items: center;
 .spiner{
   color: black;
 }
+
+.video-button-custom:focus, .video-button-custom:hover {
+  color: grey;
+  border-color: grey;
+}
+.ant-btn{
+  border-color: grey;
+}

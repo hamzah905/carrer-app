@@ -293,7 +293,7 @@ class ApplyJobForm extends React.Component {
                     beforeUpload={f => {
                       this.onSelectVideoFile(f);
                     }}>
-                    <Button>
+                    <Button className="video-button-custom">
                       <Icon type="upload" /> Click to Upload
                     </Button>
                     </Upload>
