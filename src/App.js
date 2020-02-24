@@ -18,7 +18,7 @@ class MyProvider extends Component {
   state = {
     url_param: "careers-app.myshopify.com",
     landing_page: "blogs",
-    layout_color: "#002140",
+    layout_color: "rgb(92, 106, 196)",
     image: `/uploads/setting/image/1/careers-banner.png`,
     font_family: "Roboto",
     font_size: 5,
