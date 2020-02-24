@@ -49,7 +49,7 @@ class LinkedinButton extends React.Component {
         // const url = this.props.url_param
         // const job_id = this.props.job_id
         // var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77sonxvucgwcn5&redirect_uri=https://careers-shopify-app.now.sh/jobs/${parseInt(job_id)}/apply?url=${url}&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`
-        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77sonxvucgwcn5&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fjobs%2F2%2Fapply&scope=r_liteprofile%20r_emailaddress%20r_basicprofile`
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77sonxvucgwcn5&redirect_uri=http%3A%2F%2F64.225.30.37%2Fjobs%2F2%2Fapply&scope=r_liteprofile%20r_emailaddress%20r_basicprofile`
         axios.get(`${oauthUrl}`)
         .then(res => {
           debugger
