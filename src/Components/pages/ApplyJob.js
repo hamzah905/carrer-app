@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Form, Row, Col, Input, Button, message, Upload, Spin, Icon } from "antd";
+import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
 import Logo from "../.././Logo.png";
+import LinkedinButton from "./LinkedinButton";
 import {baseURL} from "../.././utils";
 
 const props = {
@@ -34,7 +35,7 @@ class ApplyJobForm extends React.Component {
     this.setState({ coverLetterFile: file });
   };
   onSelectVideoFile = file => {
-    console.log(file,'cover letter file')
+    console.log(file,'video file')
     this.setState({ videoFile: file });
   };
   handleSubmit = event => {
@@ -106,7 +107,7 @@ class ApplyJobForm extends React.Component {
   
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { cvFile, coverLetterFile } = this.state;
+    const { cvFile, coverLetterFile, videoFile } = this.state;
     console.log(this.props);
     return (
       <div className="container">
@@ -229,7 +230,7 @@ class ApplyJobForm extends React.Component {
                 </Form.Item>
               </Col>
               :
-              <div></div>
+              console.log("No Resume")
               }
               {this.props.cover_letter ?
               <Col span={12} key="cover_letter">
@@ -260,48 +261,48 @@ class ApplyJobForm extends React.Component {
                 </Form.Item>
               </Col>
               :
-              <div></div>
+              console.log("No Cover Letter")
               }
               {this.props.introductory_video ?
               <Col span={12} key="video">
-                <Form.Item name={`Video`} label={`Video`}>
+                <Form.Item name={`Video`} label={`Introductory Video`}>
                   {getFieldDecorator(`video`)(
-                    // <Upload  {...props}
-                    //   fileList={videoFile ? [videoFile] : []}
-                    //   beforeUpload={f => {
-                    //     this.onSelectVideoFile(f);
-                    //     return false;
-                    //   }}
-                    //   showUploadList={{
-                    //     showPreviewIcon: false,
-                    //     showRemoveIcon: false
-                    //   }}
-                    //   accept="video/*"
-                    // >
-                    //   <Button
-                    //     style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
-                    //     type="default"
-                    //     size="default"
-                    //     ghost
-                    //   >
-                    //     {"Select File"}
-                    //   </Button>
-                    // </Upload>
-
-                    <Upload {...props}
-                    // fileList={videoFile ? [videoFile] : []}
-                    beforeUpload={f => {
-                      this.onSelectVideoFile(f);
-                    }}>
-                    <Button className="video-button-custom">
-                      <Icon type="upload" /> Click to Upload
-                    </Button>
+                    <Upload  {...props}
+                      fileList={videoFile ? [videoFile] : []}
+                      beforeUpload={f => {
+                        this.onSelectVideoFile(f);
+                        return false;
+                      }}
+                      showUploadList={{
+                        showPreviewIcon: false,
+                        showRemoveIcon: false
+                      }}
+                      accept="video/*"
+                    >
+                      <Button
+                        style={{ marginLeft: 10, color: 'grey', borderColor: 'grey' }}
+                        type="default"
+                        size="default"
+                        ghost
+                      >
+                        {"Select File"}
+                      </Button>
                     </Upload>
+
+                    // <Upload {...props}
+                    // // fileList={videoFile ? [videoFile] : []}
+                    // beforeUpload={f => {
+                    //   this.onSelectVideoFile(f);
+                    // }}>
+                    // <Button className="video-button-custom">
+                    //   <Icon type="upload" /> Click to Upload
+                    // </Button>
+                    // </Upload>
                   )}
                 </Form.Item>
               </Col>
               :
-              <div></div>
+              console.log("No Video")
               }
             </Row>
             <Row>
@@ -315,9 +316,10 @@ class ApplyJobForm extends React.Component {
                   >
                     APPLY
                   </Button>
-                  <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
+                  {/* <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN */}
                     {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
-                  </Button>
+                  {/* </Button> */}
+                  < LinkedinButton  url_param = {this.props.url_param} job_id = {this.props.match.params.job_id}/>
                 </div>
               </Col>
             </Row>
