@@ -62,21 +62,21 @@ class Jobs extends React.Component {
                         className="ant-advanced-search-form"
                         onSubmit={this.handleSubmit}>
                         <Row gutter={24}>
-                            <Col span={6} key='title'>
+                            <Col span={6} key='title' className="ant-advanced-search-title" >
                                 <Form.Item
                                     name={`Title`}
                                 >
                                     {getFieldDecorator(`title`)(<Input placeholder="title" />)}
                                 </Form.Item>
                             </Col>
-                            <Col span={6} key='loacation'>
+                            <Col span={6} key='loacation' className="ant-advanced-search-location" >
                                 <Form.Item
                                     name={`Location`}
                                 >
                                     {getFieldDecorator(`location`)(<Input placeholder="location" />)}
                                 </Form.Item>
                             </Col>
-                            <Col span={6} key='profession'>
+                            <Col span={6} key='profession' className="ant-advanced-search-profession" >
                                 <Form.Item
                                     name={`Profession`}
                                 >
@@ -86,7 +86,7 @@ class Jobs extends React.Component {
                             <Col
                                 span={6}>
                                 <div className="custom-bottom-btn" style={{margin: "5px 0px"}}>
-                                    <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>SEARCH</Button>
+                                    <Button type="primary primary-btnn" className="custom-apply-search-btn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>SEARCH</Button>
                                 </div>
                             </Col>
                         </Row>

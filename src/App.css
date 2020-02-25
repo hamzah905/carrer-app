@@ -65,7 +65,7 @@
 .logo{
   background: #002140;
   text-align: center;
-  width: 215px;
+  width: 245px;
   float: left;
 }
 
@@ -80,7 +80,7 @@
   color: #fdfcfc;
 }
 .menuCon{
-  width: calc(100% - 215px);
+  width: calc(100% - 245px);
   float: left;
 }
 .menuCon .ant-menu-item{
@@ -145,6 +145,10 @@
 }
 .ant-layout-sider{
   background: #f0f2f5;
+  flex: 0 0 230px !Important;
+  max-width: 230px !Important;
+  min-width: 230px !Important;
+  width: 230px !Important;
 } 
 
 /* @media(max-width: 767px){
@@ -192,7 +196,7 @@
 }
 
 .custom-detail-section form input:focus{
-  border-radius: 50px;
+  /* border-radius: 50px; */
   text-overflow: ellipsis;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
@@ -200,7 +204,7 @@
 }
 
 .custom-detail-section form input:active{
-  border-radius: 50px;
+  /* border-radius: 50px; */
   text-overflow: ellipsis;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
@@ -212,7 +216,7 @@
 }
 
 .custom-job-detail{
-  width: 100%;
+  width: 75%;
 }
 
 .custom-detail-section .custom-job-detail h3.custom-job-heading a{
@@ -230,7 +234,7 @@
 .custom-apply-btn{
 display: flex;
 letter-spacing: 1px;
-margin-left: 20px;
+margin-left: 80px;
 align-items: center;
 }
 
@@ -246,8 +250,24 @@ align-items: center;
   font-weight: 500;
 }
 
-@media(max-width: 800px){
+@media(max-width: 500px){
+  .menuBar{
+    display: none;
+  }
+  .ant-breadcrumb{
+    display: none;
+
+  }
   .ant-layout-sider{
+    display: none;
+  }
+  .ant-advanced-search-location{
+    display: none;
+  }
+  .ant-advanced-search-profession{
+    display: none;
+  }
+  .custom-header{
     display: none;
   }
 }
@@ -298,6 +318,15 @@ align-items: center;
   text-shadow: transparent;
   width: 180px;
 }
+.custom-apply-search-btn{
+  border: 0;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.21);
+  font-size: 14px;
+  width: 110%;
+  display: block;
+  margin: 0 auto;
+}
 
 .custom-bottom-btn button.apply-btn-linkedin{
   background-color: #4ca3d8;
@@ -321,7 +350,7 @@ align-items: center;
 }
 
 .custom-detail-section .ant-input:placeholder-shown{
-  border-radius: 50px;
+  /* border-radius: 50px; */
   text-overflow: ellipsis;
   border: transparent;
   box-shadow: 0px 2px 4px #0000002e;
@@ -350,7 +379,7 @@ align-items: center;
   color: #606060;
   /* display: inline-block; */
   background-color:#ebebeb;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   padding: 6px 10px;
   outline: none;
   white-space: nowrap;
