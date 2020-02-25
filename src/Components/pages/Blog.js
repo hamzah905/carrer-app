@@ -43,13 +43,13 @@ render() {
                     <div>{blog.description}</div>
                     </Descriptions.Item>
                     <Descriptions.Item className="custom-blog-img">
-                    <img src={`https://shoppify-career.herokuapp.com/${blog.image}`} alt="new"/>
+                    <img src={`${baseURL}/${blog.image}`} alt="new"/>
                     </Descriptions.Item>
                 </Descriptions>
                 :
                 <Descriptions>
                     <Descriptions.Item className="custom-blog-img">
-                    <img src={`https://shoppify-career.herokuapp.com/${blog.image}`} alt="new"/>
+                    <img src={`${baseURL}/${blog.image}`} alt="new"/>
                     </Descriptions.Item>
                   
                     <Descriptions.Item className="custom-blog-content-left">

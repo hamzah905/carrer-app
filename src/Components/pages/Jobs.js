@@ -86,7 +86,7 @@ class Jobs extends React.Component {
                             <Col
                                 span={6}>
                                 <div className="custom-bottom-btn" style={{margin: "5px 0px"}}>
-                                    <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>Search</Button>
+                                    <Button type="primary primary-btnn" className="custom-apply-btn" htmlType="submit" style={{backgroundColor: this.props.layout_color}}>SEARCH</Button>
                                 </div>
                             </Col>
                         </Row>
