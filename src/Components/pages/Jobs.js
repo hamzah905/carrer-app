@@ -99,7 +99,8 @@ class Jobs extends React.Component {
                 <div className="custom-detail-section">
                     <div className="custom-job-detail">
                         <h3 className="custom-job-heading"><Link to={`/jobs/${job.id}?url=${this.props.url_param}`}>{job.title}</Link></h3>
-                        <p className="custom-job-location">{job.description}</p>
+                        <p className="custom-job-location">{job.location}</p>
+                        <p className="custom-job-desc">{job.description}</p>
                     </div>
                     <div className="custom-apply-btn">
                         <Button type="btn primary-btn" style={{backgroundColor: this.props.layout_color}} ><Link to={`/jobs/${job.id}?url=${this.props.url_param}`} >APPLY</Link></Button>

@@ -225,7 +225,7 @@
   /* font-family: Arial, Helvetica, sans-serif; */
 }
 
-.custom-detail-section .custom-job-detail p.custom-job-location{
+.custom-detail-section .custom-job-detail p.custom-job-desc{
   color: #9a9a9a;
   font-size: 14px;
   /* font-family: Arial, Helvetica, sans-serif; */
@@ -275,6 +275,18 @@ align-items: center;
   }
   .ant-layout-footer{
     display: none;
+  }
+  .custom-job-desc{
+    display: none;
+  }
+  .custom-apply-search-btn{
+    width: 100%;
+  }
+  .custom-detail-section .ant-col-6{
+    width: 50%;
+  }
+  .custom-detail-section .ant-advanced-search-form{
+    margin-left: 9%;
   }
 }
 

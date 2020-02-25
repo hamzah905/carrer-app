@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
 import Logo from "../.././Logo.png";
-import LinkedinButton from "./LinkedinButton";
+// import LinkedinButton from "./LinkedinButton";
 import {baseURL} from "../.././utils";
 
 const props = {
@@ -316,10 +316,10 @@ class ApplyJobForm extends React.Component {
                   >
                     APPLY
                   </Button>
-                  {/* <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN */}
+                  <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
                     {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
-                  {/* </Button> */}
-                  < LinkedinButton  url_param = {this.props.url_param} job_id = {this.props.match.params.job_id}/>
+                  </Button>
+                  {/* < LinkedinButton  url_param = {this.props.url_param} job_id = {this.props.match.params.job_id}/> */}
                 </div>
               </Col>
             </Row>

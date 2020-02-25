@@ -21,7 +21,6 @@ class LinkedinButton extends React.Component {
       }
     
       componentDidMount() {
-          debugger
         window.addEventListener('message', this.handlePostMessage);
       }
     
@@ -33,7 +32,6 @@ class LinkedinButton extends React.Component {
       };
     
       updateProfile = (profile) => {
-          debugger
         console.log(profile)
           this.setState({
             isAuthorized: true,
@@ -52,7 +50,6 @@ class LinkedinButton extends React.Component {
         var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77sonxvucgwcn5&redirect_uri=http%3A%2F%2F64.225.30.37%2Fjobs%2F2%2Fapply&scope=r_liteprofile%20r_emailaddress%20r_basicprofile`
         axios.get(`${oauthUrl}`)
         .then(res => {
-          debugger
         })
         var width = 450,
           height = 730,
