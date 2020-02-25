@@ -35,6 +35,7 @@ class JobDetail extends React.Component {
        
       <div className="custom-detail-heading">
         <h1>{job.title}</h1>
+        <p>{job.location}</p>
         </div>
         <div className="custom-detail-section custom-job-section">
         <Descriptions>
@@ -47,7 +48,7 @@ class JobDetail extends React.Component {
           </Descriptions.Item>
           <br></br>
           <Descriptions.Item label="Description">
-    <div className="custom-job-description">{job.description}</div>
+          <div className="custom-job-description">{job.description}</div>
           </Descriptions.Item>
         </Descriptions>
         <Row>
