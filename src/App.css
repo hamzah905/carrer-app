@@ -285,8 +285,27 @@ align-items: center;
   .custom-detail-section .ant-col-6{
     width: 50%;
   }
+  .custom-bottom-btn button{
+    margin: 0px !important;
+  }
+  .custom-apply-search-btn{
+    width: 100% !important;
+  }
+  .custom-detail-section{
+    margin: 20px 50px;
+  }
+  .custom-detail-section .custom-job-detail h3.custom-job-heading a{
+    font-size: 18px;
+  }
+  .custom-detail-section .ant-col-12{
+    width: 100%;
+  }
+  .custom-bottom-btn button{
+    margin: 5px 5px !important;
+  }
   .custom-detail-section .ant-advanced-search-form{
-    margin-left: 9%;
+    /* margin-left: 9%; */
+    width: 100%;
   }
 }
 
