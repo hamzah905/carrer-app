@@ -270,6 +270,12 @@ align-items: center;
   .custom-header{
     display: none;
   }
+  .ant-layout-content{
+    margin: 0px 0px !important;
+  }
+  .ant-layout-footer{
+    display: none;
+  }
 }
 
 /*********************************/
