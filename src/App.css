@@ -251,6 +251,15 @@ align-items: center;
 }
 
 @media(max-width: 500px){
+  .custom-bottom-btn button.apply-btn-linkedin{
+    display: none;
+  }
+
+  .apply-btn-linkedin-1{
+    margin-left: 24%;
+    text-align: center !important;
+    display: initial !important;
+  }
   .menuBar{
     display: none;
   }
@@ -373,6 +382,22 @@ align-items: center;
 }
 
 .custom-bottom-btn button.apply-btn-linkedin{
+  background-color: #4ca3d8;
+  border: 0px;
+  letter-spacing: 1px;
+  /* border-radius: 50px; */
+  box-shadow: 0px 3px 6px #00000036;
+  color: #fff;
+  width: 180px;
+  font-size: 14px;
+  text-shadow: transparent;
+}
+.apply-btn-linkedin-1{
+  text-align: center;
+  display: none;
+}
+
+.apply-btn-linkedin-1 button.apply-btn-linkedin{
   background-color: #4ca3d8;
   border: 0px;
   letter-spacing: 1px;

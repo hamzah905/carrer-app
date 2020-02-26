@@ -119,6 +119,11 @@ class ApplyJobForm extends React.Component {
             <h2>APPLY JOB</h2>
           </div>
         </div>
+        <div className="apply-btn-linkedin-1">
+          <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
+            {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
+          </Button>
+          </div>
         <div className="custom-detail-section">
           <Form
             name="advanced_search"
@@ -316,7 +321,7 @@ class ApplyJobForm extends React.Component {
                   >
                     APPLY
                   </Button>
-                  <Button type="primary  primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
+                  <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
                     {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
                   </Button>
                   {/* < LinkedinButton  url_param = {this.props.url_param} job_id = {this.props.match.params.job_id}/> */}
