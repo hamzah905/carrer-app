@@ -59,7 +59,7 @@ class JobDetail extends React.Component {
               <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply?url=${this.props.url_param}`} >APPLY JOB</Link>
               </Button>
               <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
-                <Link to={`/jobs?url=${this.props.url_param}`} >CANCEL</Link>
+                <Link to={`/jobs?url=${this.props.url_param}`} >BACK</Link>
               </Button>
               </div>
             </Col>
