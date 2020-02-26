@@ -12,7 +12,7 @@ class Blog extends React.Component {
     }
   
     componentDidMount() {
-      axios.get(`${baseURL}/blogs?url=careers-app.myshopify.com`)
+      axios.get(`${baseURL}/blogs?url=${this.props.url_param}`)
         .then(res => {
           var blogs = res.data.data;
           this.setState({ blogs, loading: false });
@@ -66,7 +66,7 @@ render() {
             <Col span={24}>
             <div className="custom-bottom-btn">
             <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-job" style={{backgroundColor: this.props.layout_color}}>
-                <Link to={`/jobs`} >VIEW JOBS</Link>
+                <Link to={`/jobs?url=${this.props.url_param}`} >VIEW JOBS</Link>
                  </Button>
             </div>
             

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
 import Logo from "../.././Logo.png";
 // import LinkedinButton from "./LinkedinButton";
@@ -70,7 +70,7 @@ class ApplyJobForm extends React.Component {
         .post(
           `${baseURL}/jobs/${parseInt(
             this.props.match.params.job_id
-          )}/apply?url=careers-app.myshopify.com`,
+          )}/apply?url=${this.props.url_param}`,
           formData,
           { params },
           {
@@ -324,7 +324,9 @@ class ApplyJobForm extends React.Component {
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
                     {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
                   </Button>
-                  {/* < LinkedinButton  url_param = {this.props.url_param} job_id = {this.props.match.params.job_id}/> */}
+                  <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
+                    <Link to={`/jobs?url=${this.props.url_param}`} >CANCEL</Link>
+                  </Button>
                 </div>
               </Col>
             </Row>

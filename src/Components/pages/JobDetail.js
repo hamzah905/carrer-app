@@ -15,7 +15,7 @@ class JobDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${baseURL}/jobs/${parseInt(this.props.match.params.job_id)}?url=careers-app.myshopify.com`)
+    axios.get(`${baseURL}/jobs/${parseInt(this.props.match.params.job_id)}?url=${this.props.url_param}`)
       .then(res => {
         var job = res.data.data;
         this.setState({ job });
@@ -57,6 +57,9 @@ class JobDetail extends React.Component {
                 {console.log(this.props.layout_color)}
               <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-job" style={{backgroundColor: this.props.layout_color}}>
               <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply?url=${this.props.url_param}`} >APPLY JOB</Link>
+              </Button>
+              <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
+                <Link to={`/jobs?url=${this.props.url_param}`} >CANCEL</Link>
               </Button>
               </div>
             </Col>
