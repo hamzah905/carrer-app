@@ -22,7 +22,6 @@ class JobDetail extends React.Component {
       })
   }
   render() {
-
     var { job } = this.state;
     return(
       <div className="container">

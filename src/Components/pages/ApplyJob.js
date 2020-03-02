@@ -6,6 +6,7 @@ import Logo from "../.././Logo.png";
 // import LinkedinButton from "./LinkedinButton";
 import {baseURL} from "../.././utils";
 
+
 const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -24,8 +25,9 @@ const props = {
   },
 };
 
+
 class ApplyJobForm extends React.Component {
-  state = { cvFile: null, coverLetterFile: null, videoFile: null, loading: false };
+  state = { cvFile: null, coverLetterFile: null, videoFile: null, loading: false, job: [] };
   onSelectCvFile = file => {
     console.log(file,'cv file')
     this.setState({ cvFile: file });
@@ -38,6 +40,13 @@ class ApplyJobForm extends React.Component {
     console.log(file,'video file')
     this.setState({ videoFile: file });
   };
+  componentDidMount() {
+    axios.get(`${baseURL}/jobs/${parseInt(this.props.match.params.job_id)}?url=${this.props.url_param}`)
+      .then(res => {
+        var job = res.data.data;
+        this.setState({ job });
+      })
+  }
   handleSubmit = event => {
     event.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -106,6 +115,7 @@ class ApplyJobForm extends React.Component {
   };
   
   render() {
+    var { job } = this.state;
     const { getFieldDecorator } = this.props.form;
     const { cvFile, coverLetterFile, videoFile } = this.state;
     console.log(this.props);
@@ -321,7 +331,8 @@ class ApplyJobForm extends React.Component {
                   >
                     APPLY
                   </Button>
-                  <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">APPLY via LINKEDIN
+                  <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
+                    <a href={job.linkedin_job_url} >APPLY via LINKEDIN</a>
                     {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
                   </Button>
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
