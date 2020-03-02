@@ -131,7 +131,7 @@ class ApplyJobForm extends React.Component {
         </div>
         <div className="apply-btn-linkedin-1">
           <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
-              <a href={job.linkedin_job_url} >APPLY via LINKEDIN</a>
+              <a href={job.linkedin_job_url} target='_blank' >APPLY via LINKEDIN</a>
           </Button>
           </div>
         <div className="custom-detail-section">
@@ -332,8 +332,7 @@ class ApplyJobForm extends React.Component {
                     APPLY
                   </Button>
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
-                    <a href={job.linkedin_job_url} >APPLY via LINKEDIN</a>
-                    {/* <Link to={`/jobs/${parseInt(this.props.match.params.job_id)}/apply`} >APPLY via LINKEDIN</Link> */}
+                    <a href={job.linkedin_job_url} target='_blank' >APPLY via LINKEDIN</a>
                   </Button>
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
                     <Link to={`/jobs?url=${this.props.url_param}`} >CANCEL</Link>
