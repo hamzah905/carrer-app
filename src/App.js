@@ -46,6 +46,7 @@ class MyProvider extends Component {
         form_fields: response.form_fields });
       })
       console.log(this.state)
+      localStorage.setItem('url_param', urlParam);
   }
 
   render() {
@@ -79,7 +80,7 @@ class App extends Component {
               <Sidebar 
               image={context.state.image} 
               layout_color={context.state.layout_color} 
-              url_param = {context.state.url_param}
+              url_param = {localStorage.getItem('url_param')}
               introductory_video = {context.state.introductory_video}
               resume = {context.state.resume}
               cover_letter = {context.state.cover_letter}
