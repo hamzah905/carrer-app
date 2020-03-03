@@ -3,13 +3,13 @@ import {
   Switch,
   Route, 
 } from "react-router-dom";
-import ContactUs from '../pages/ContactUs'
+// import ContactUs from '../pages/ContactUs'
 import Jobs from '../pages/Jobs'
 import JobDetail from '../pages/JobDetail'
 import ApplyJob from '../pages/ApplyJob'
 import Blog from '../pages/Blog'
-import Home from '../pages/Home'
-import Careers from '../pages/Careers'
+// import Home from '../pages/Home'
+// import Careers from '../pages/Careers'
 import {  Layout, Breadcrumb } from 'antd';
 import {baseURL} from "../.././utils";
 import SideImage from "../.././careers-banner.png";
@@ -49,10 +49,7 @@ class Sidebar extends Component {
             <div className="custom-section">
               <Switch>
                 <Route path="/" exact>
-                  <Home />
-                </Route>
-                <Route path="/careers" exact>
-                  <Careers url_param = {this.props.url_param} />
+                  <Jobs url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
                 <Route path="/jobs/:job_id" exact>
                   <JobDetail url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
@@ -71,9 +68,6 @@ class Sidebar extends Component {
                 </Route>
                 <Route path="/blog" exact>
                   <Blog url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
-                </Route>
-                <Route path="/contact_us" exact>
-                  <ContactUs url_param = {this.props.url_param} layout_color = {this.props.layout_color} />
                 </Route>
               </Switch>
             </div>

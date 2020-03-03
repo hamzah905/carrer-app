@@ -9,13 +9,13 @@ import { Menu } from 'antd';
 class LeftMenu extends Component {
   render() {
     return (
-			<Menu mode="horizontal">
-      	<Menu.Item key="home">
+			<Menu mode="horizontal" defaultSelectedKeys={"job"}>
+      	{/* <Menu.Item key="home">
           <Link to={`/?url=${this.props.url_param}`}>Home</Link>
-        </Menu.Item>
-      	<Menu.Item key="career">
+        </Menu.Item> */}
+      	{/* <Menu.Item key="career">
           <Link to={`/careers?url=${this.props.url_param}`}>Careers</Link>
-        </Menu.Item>
+        </Menu.Item> */}
         {/* <SubMenu title={<span>Jobs</span>}>
           <MenuItemGroup title="Item 1">
             <Menu.Item key="setting:1">Option 1</Menu.Item>
@@ -32,9 +32,9 @@ class LeftMenu extends Component {
       	<Menu.Item key="blog">
           <Link to={`/blog?url=${this.props.url_param}`}>Blog</Link>
         </Menu.Item>
-        <Menu.Item key="alipay">
+        {/* <Menu.Item key="alipay">
           <Link to={`/contact_us?url=${this.props.url_param}`}>Contact Us</Link>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     );
   }

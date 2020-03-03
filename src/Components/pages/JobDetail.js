@@ -28,7 +28,7 @@ class JobDetail extends React.Component {
         <div className="custom-header">
           <div className="custom-logo">
             <img src={Logo} className="App-logo" alt="logo" />
-            <h2 className="page-title">JOB DETAIL</h2>
+            <h2 className="page-title">JOB DETAILS</h2>
           </div>
         </div>
        
