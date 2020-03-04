@@ -25,6 +25,7 @@ class MyProvider extends Component {
     introductory_video: false,
     resume: true,
     cover_letter: false,
+    allow_linkedin: false,
     form_fields: []
   }
 
@@ -43,6 +44,7 @@ class MyProvider extends Component {
         introductory_video: response.introductory_video,
         resume: response.resume,
         cover_letter: response.cover_letter,
+        allow_linkedin: response.allow_linkedin,
         form_fields: response.form_fields });
       })
       console.log(this.state)
@@ -84,6 +86,7 @@ class App extends Component {
               introductory_video = {context.state.introductory_video}
               resume = {context.state.resume}
               cover_letter = {context.state.cover_letter}
+              allow_linkedin = {context.state.allow_linkedin}
               form_fields = {context.state.form_fields}
               />
             </div>

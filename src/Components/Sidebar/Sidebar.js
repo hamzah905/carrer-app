@@ -63,6 +63,7 @@ class Sidebar extends Component {
                    introductory_video = {this.props.introductory_video}
                    resume = {this.props.resume}
                    cover_letter = {this.props.cover_letter}
+                   allow_linkedin = {this.props.allow_linkedin}
                    form_fields = {this.props.form_fields}
                    layout_color = {this.props.layout_color}  />
                 </Route>

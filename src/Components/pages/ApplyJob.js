@@ -131,14 +131,20 @@ class ApplyJobForm extends React.Component {
             <h2>APPLY JOB</h2>
           </div>
         </div>
+        
+        {this.props.allow_linkedin ?
         <div style={{textAlign: "right"}}>
-        <div className="apply-btn-linkedin-1">
-          <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
-              <a href={job.linkedin_job_url} target='_blank' >APPLY via <span> <img src={`${linkedin}`} className="linkedin-icon"></img>  </span> </a>
-          </Button>
+          <div className="apply-btn-linkedin-1">
+            <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
+                <a href={job.linkedin_job_url} target='_blank' >APPLY via <span> <img src={`${linkedin}`} className="linkedin-icon"></img>  </span> </a>
+            </Button>
           </div>
 
         </div>
+
+        :
+        console.log("No Linkedin")
+        }
         <div className="custom-detail-section">
           <Form
             name="advanced_search"
@@ -336,9 +342,13 @@ class ApplyJobForm extends React.Component {
                   >
                     APPLY
                   </Button>
+                {this.props.allow_linkedin ?
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
                     <a href={job.linkedin_job_url} target='_blank' >APPLY via LINKEDIN</a>
                   </Button>
+                :
+                console.log("No Linkedin")
+                }
                   <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-back">
                     <Link to={`/jobs?url=${this.props.url_param}`} >CANCEL</Link>
                   </Button>
