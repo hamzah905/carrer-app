@@ -12,11 +12,11 @@ class LeftMenu extends Component {
 			<Menu mode="horizontal" defaultSelectedKeys={"job"}>
       	{/* <Menu.Item key="home">
           <Link to={`/?url=${this.props.url_param}`}>Home</Link>
-        </Menu.Item> */}
-      	{/* <Menu.Item key="career">
+        </Menu.Item>
+      	<Menu.Item key="career">
           <Link to={`/careers?url=${this.props.url_param}`}>Careers</Link>
-        </Menu.Item> */}
-        {/* <SubMenu title={<span>Jobs</span>}>
+        </Menu.Item>
+        <SubMenu title={<span>Jobs</span>}>
           <MenuItemGroup title="Item 1">
             <Menu.Item key="setting:1">Option 1</Menu.Item>
             <Menu.Item key="setting:2">Option 2</Menu.Item>

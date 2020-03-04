@@ -3,6 +3,8 @@ import axios from "axios";
 import { withRouter, Link } from "react-router-dom";
 import { Form, Row, Col, Input, Button, message, Upload, Spin } from "antd";
 import Logo from "../.././Logo.png";
+import linkedin from "../.././linkedin.png";
+
 // import LinkedinButton from "./LinkedinButton";
 import {baseURL} from "../.././utils";
 
@@ -129,11 +131,14 @@ class ApplyJobForm extends React.Component {
             <h2>APPLY JOB</h2>
           </div>
         </div>
+        <div style={{textAlign: "right"}}>
         <div className="apply-btn-linkedin-1">
           <Button type="primary primary-btnn" htmlType="submit" className="apply-btn-linkedin">
-              <a href={job.linkedin_job_url} target='_blank' >APPLY via LINKEDIN</a>
+              <a href={job.linkedin_job_url} target='_blank' >APPLY via <span> <img src={`${linkedin}`} className="linkedin-icon"></img>  </span> </a>
           </Button>
           </div>
+
+        </div>
         <div className="custom-detail-section">
           <Form
             name="advanced_search"
@@ -150,7 +155,7 @@ class ApplyJobForm extends React.Component {
                         message: "first name can't be blank!"
                       }
                     ]
-                  })(<Input placeholder="Tom" />)}
+                  })(<Input placeholder="First Name" />)}
                 </Form.Item>
               </Col>
               <Col span={12} key="last-name">
@@ -162,7 +167,7 @@ class ApplyJobForm extends React.Component {
                         message: "last name can't be blank!"
                       }
                     ]
-                  })(<Input placeholder="Cruse" />)}
+                  })(<Input placeholder="Last Name" />)}
                 </Form.Item>
               </Col>
               <Col span={12} key="email">
@@ -191,19 +196,19 @@ class ApplyJobForm extends React.Component {
               </Col>
               <Col span={12} key="linkedin-url">
                 <Form.Item name={`LinkedinUrl`} label={`Linkedin Url`}>
-                  {getFieldDecorator(`linkedin_url`)(<Input placeholder="placeholder" />)}
+                  {getFieldDecorator(`linkedin_url`)(<Input placeholder="Linkedin Url" />)}
                 </Form.Item>
               </Col>
               <Col span={12} key="address">
                 <Form.Item name={`Address`} label={`Address`}>
-                  {getFieldDecorator(`address`)(<Input placeholder="placeholder" />)}
+                  {getFieldDecorator(`address`)(<Input placeholder="Address" />)}
                 </Form.Item>
               </Col>
 
             { this.props.form_fields.map((field)=>
               <Col span={12} key={`${field}`}>
                 <Form.Item name={`${field}`} label={`${field}`}>
-                  {getFieldDecorator(`${field}`)(<Input placeholder="placeholder" />)}
+                  {getFieldDecorator(`${field}`)(<Input placeholder={`${field}`} />)}
                 </Form.Item>
               </Col>
             )}

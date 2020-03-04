@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  Link
+} from "react-router-dom";
 import LeftMenu from './LeftMenu'
 import RightMenu from './RightMenu'
 import { Drawer, Button } from 'antd';
@@ -24,7 +27,7 @@ class Navbar extends Component {
     return (
         <nav className="menuBar">
         	<div className="logo">
-        		<a href="/">Carrers</a>
+          		<Link to={`/jobs?url=${this.props.url_param}`}>Careers</Link>
         	</div>
         	<div className="menuCon">
         		<div className="leftMenu">
